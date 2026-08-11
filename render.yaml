@@ -17,7 +17,7 @@ services:
         fromDatabase:
           name: portfolio-db
           property: connectionString
-      - key: RAILS_MASTER_KEY
+      - key: e6c86acf1551be6650323a3ba7a7a433
         sync: false
       - key: RAILS_ENV
         value: production

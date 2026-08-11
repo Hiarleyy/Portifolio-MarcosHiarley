@@ -244,11 +244,20 @@
 <section class="section cta-section">
   <div class="container">
     <div class="cta-card fade-in">
-      <h2 class="cta-title">Vamos trabalhar juntos?</h2>
-      <p class="cta-text">Estou sempre aberto a novos projetos e oportunidades. Entre em contato para discutirmos sua próxima ideia.</p>
-      <a href="<%= contact_path %>" class="btn btn-primary btn-lg">
-        <i class="ph ph-rocket"></i> Iniciar Conversa
-      </a>
+      <div class="cta-avatar-wrapper">
+        <%= image_tag "avatar.gif", alt: "CTA Image", class: "cta-avatar" %>
+      </div>
+      
+      <div class="cta-content">
+        <h2 class="cta-title">Vamos trabalhar juntos?</h2>
+        <p class="cta-text">Estou sempre aberto a novos projetos e oportunidades. Entre em contato para discutirmos sua próxima ideia.</p>
+      </div>
+
+      <div class="cta-action">
+        <a href="<%= contact_path %>" class="btn btn-primary btn-lg">
+          <i class="ph ph-rocket"></i> Iniciar Conversa
+        </a>
+      </div>
     </div>
   </div>
 </section>

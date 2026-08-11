@@ -1,0 +1,52 @@
+<% content_for(:title) { @project.title } %>
+
+<section class="page-header">
+  <div class="container">
+    <a href="<%= projects_path %>" class="back-link fade-in">
+      <i class="ph ph-arrow-left"></i> Voltar aos Projetos
+    </a>
+    <h1 class="page-title fade-in"><%= @project.title %></h1>
+  </div>
+</section>
+
+<section class="section">
+  <div class="container container-narrow">
+    <% if @project.screenshot.attached? %>
+      <div class="project-show-image fade-in">
+        <%= image_tag @project.screenshot, alt: @project.title %>
+      </div>
+    <% end %>
+
+    <div class="project-show-content fade-in">
+      <div class="project-show-description prose">
+        <%= simple_format(@project.description) %>
+      </div>
+
+      <div class="project-show-meta">
+        <% if @project.technologies.present? %>
+          <div class="project-show-section">
+            <h3><i class="ph ph-stack"></i> Tecnologias</h3>
+            <div class="project-techs">
+              <% @project.technologies.split(",").each do |tech| %>
+                <span class="tech-badge"><%= tech.strip %></span>
+              <% end %>
+            </div>
+          </div>
+        <% end %>
+
+        <div class="project-show-actions">
+          <% if @project.live_url.present? %>
+            <a href="<%= @project.live_url %>" target="_blank" rel="noopener" class="btn btn-primary">
+              <i class="ph ph-globe"></i> Ver Online
+            </a>
+          <% end %>
+          <% if @project.github_url.present? %>
+            <a href="<%= @project.github_url %>" target="_blank" rel="noopener" class="btn btn-outline">
+              <i class="ph ph-github-logo"></i> Ver Código
+            </a>
+          <% end %>
+        </div>
+      </div>
+    </div>
+  </div>
+</section>

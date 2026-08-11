@@ -1,0 +1,66 @@
+<% content_for(:title) { "Projetos" } %>
+<% content_for(:meta_description) { "Conheça os projetos e aplicações que desenvolvi usando Ruby on Rails e tecnologias modernas." } %>
+
+<section class="page-header">
+  <div class="container">
+    <h1 class="page-title fade-in">Meus <span class="gradient-text">Projetos</span></h1>
+    <p class="page-subtitle fade-in">Uma coleção dos projetos que desenvolvi ao longo da minha carreira.</p>
+  </div>
+</section>
+
+<section class="section">
+  <div class="container">
+    <% if @projects.any? %>
+      <div class="projects-grid projects-grid-full">
+        <% @projects.each_with_index do |project, index| %>
+          <div class="project-card fade-in" style="animation-delay: <%= index * 0.1 %>s">
+            <div class="project-image">
+              <% if project.screenshot.attached? %>
+                <%= image_tag project.screenshot, alt: project.title %>
+              <% else %>
+                <div class="project-placeholder">
+                  <i class="ph ph-code"></i>
+                </div>
+              <% end %>
+              <% if project.featured? %>
+                <span class="project-badge">Destaque</span>
+              <% end %>
+              <div class="project-overlay">
+                <div class="project-links">
+                  <% if project.live_url.present? %>
+                    <a href="<%= project.live_url %>" target="_blank" rel="noopener" class="project-link-btn" title="Ver Online">
+                      <i class="ph ph-globe"></i>
+                    </a>
+                  <% end %>
+                  <% if project.github_url.present? %>
+                    <a href="<%= project.github_url %>" target="_blank" rel="noopener" class="project-link-btn" title="Ver Código">
+                      <i class="ph ph-github-logo"></i>
+                    </a>
+                  <% end %>
+                  <a href="<%= project_path(project) %>" class="project-link-btn" title="Detalhes">
+                    <i class="ph ph-arrow-square-out"></i>
+                  </a>
+                </div>
+              </div>
+            </div>
+            <div class="project-info">
+              <h3 class="project-title"><%= project.title %></h3>
+              <p class="project-description"><%= truncate(project.description, length: 150) %></p>
+              <div class="project-techs">
+                <% project.technologies.to_s.split(",").each do |tech| %>
+                  <span class="tech-badge"><%= tech.strip %></span>
+                <% end %>
+              </div>
+            </div>
+          </div>
+        <% end %>
+      </div>
+    <% else %>
+      <div class="empty-state fade-in">
+        <i class="ph ph-folder-notch-open"></i>
+        <h3>Nenhum projeto cadastrado ainda</h3>
+        <p>Em breve meus projetos aparecerão aqui.</p>
+      </div>
+    <% end %>
+  </div>
+</section>

@@ -1,0 +1,77 @@
+<div class="admin-page-header">
+  <div>
+    <h1>Artigos</h1>
+    <p>Gerencie os artigos do seu blog.</p>
+  </div>
+  <a href="<%= new_admin_article_path %>" class="btn btn-primary">
+    <i class="ph ph-plus"></i> Novo Artigo
+  </a>
+</div>
+
+<div class="admin-card">
+  <% if @articles.any? %>
+    <table class="admin-table">
+      <thead>
+        <tr>
+          <th>Título</th>
+          <th>Status</th>
+          <th>Destaque</th>
+          <th>Publicado em</th>
+          <th>Ações</th>
+        </tr>
+      </thead>
+      <tbody>
+        <% @articles.each do |article| %>
+          <tr>
+            <td>
+              <div class="table-title-cell">
+                <% if article.cover_image.attached? %>
+                  <%= image_tag article.cover_image, class: "table-thumbnail" %>
+                <% end %>
+                <strong><%= article.title %></strong>
+              </div>
+            </td>
+            <td>
+              <% if article.published? %>
+                <span class="status-badge published">Publicado</span>
+              <% else %>
+                <span class="status-badge draft">Rascunho</span>
+              <% end %>
+            </td>
+            <td>
+              <% if article.featured? %>
+                <i class="ph ph-star-fill" style="color: var(--accent);"></i>
+              <% else %>
+                <i class="ph ph-star" style="color: var(--text-muted);"></i>
+              <% end %>
+            </td>
+            <td><%= article.published_at&.strftime("%d/%m/%Y") || "—" %></td>
+            <td>
+              <div class="table-actions">
+                <a href="<%= article_path(article.slug) %>" target="_blank" class="btn-icon" title="Ver">
+                  <i class="ph ph-eye"></i>
+                </a>
+                <a href="<%= edit_admin_article_path(article) %>" class="btn-icon" title="Editar">
+                  <i class="ph ph-pencil-simple"></i>
+                </a>
+                <%= link_to admin_article_path(article), method: :delete, class: "btn-icon btn-icon-danger", title: "Excluir", data: { turbo_method: :delete, turbo_confirm: "Tem certeza que deseja excluir este artigo?" } do %>
+                  <i class="ph ph-trash"></i>
+                <% end %>
+              </div>
+            </td>
+          </tr>
+        <% end %>
+      </tbody>
+    </table>
+
+    <div class="pagination-wrapper">
+      <%= paginate @articles %>
+    </div>
+  <% else %>
+    <div class="empty-state-sm">
+      <i class="ph ph-article"></i>
+      <p>Nenhum artigo criado ainda.</p>
+      <a href="<%= new_admin_article_path %>" class="btn btn-primary btn-sm">Criar Primeiro Artigo</a>
+    </div>
+  <% end %>
+</div>

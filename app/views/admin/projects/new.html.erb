@@ -1,0 +1,11 @@
+<div class="admin-page-header">
+  <div>
+    <h1>Novo Projeto</h1>
+    <p>Adicione um novo projeto ao portfólio.</p>
+  </div>
+  <a href="<%= admin_projects_path %>" class="btn btn-outline btn-sm">
+    <i class="ph ph-arrow-left"></i> Voltar
+  </a>
+</div>
+
+<%= render 'form', project: @project %>

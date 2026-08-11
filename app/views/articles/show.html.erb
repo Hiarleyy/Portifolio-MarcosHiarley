@@ -1,0 +1,88 @@
+<% content_for(:title) { @article.title } %>
+<% content_for(:meta_description) { @article.excerpt } %>
+
+<article class="article-show">
+  <!-- Article Header -->
+  <header class="article-header">
+    <div class="container container-narrow">
+      <a href="<%= articles_path %>" class="back-link fade-in">
+        <i class="ph ph-arrow-left"></i> Voltar ao Blog
+      </a>
+
+      <div class="article-meta-full fade-in">
+        <span><i class="ph ph-calendar"></i> <%= @article.formatted_date %></span>
+        <span><i class="ph ph-clock"></i> <%= @article.reading_time %> min de leitura</span>
+      </div>
+
+      <h1 class="article-show-title fade-in"><%= @article.title %></h1>
+
+      <% if @article.excerpt.present? %>
+        <p class="article-show-excerpt fade-in"><%= @article.excerpt %></p>
+      <% end %>
+    </div>
+
+    <% if @article.cover_image.attached? %>
+      <div class="article-cover fade-in">
+        <div class="container">
+          <%= image_tag @article.cover_image, alt: @article.title, class: "article-cover-img" %>
+        </div>
+      </div>
+    <% end %>
+  </header>
+
+  <!-- Article Body -->
+  <div class="article-body fade-in">
+    <div class="container container-narrow">
+      <div class="article-content prose">
+        <%= markdown(@article.body) %>
+      </div>
+
+      <% if @article.content_images.attached? %>
+        <div class="article-gallery">
+          <h3>Imagens do Artigo</h3>
+          <div class="gallery-grid">
+            <% @article.content_images.each do |image| %>
+              <div class="gallery-item">
+                <%= image_tag image, alt: "Imagem do artigo" %>
+              </div>
+            <% end %>
+          </div>
+        </div>
+      <% end %>
+    </div>
+  </div>
+
+  <!-- Related Articles -->
+  <% if @related_articles.any? %>
+    <section class="section section-alt">
+      <div class="container">
+        <div class="section-header fade-in">
+          <h2 class="section-title">Artigos Relacionados</h2>
+        </div>
+
+        <div class="articles-grid">
+          <% @related_articles.each do |article| %>
+            <a href="<%= article_path(article.slug) %>" class="article-card fade-in">
+              <div class="article-image">
+                <% if article.cover_image.attached? %>
+                  <%= image_tag article.cover_image, alt: article.title %>
+                <% else %>
+                  <div class="article-placeholder">
+                    <i class="ph ph-article"></i>
+                  </div>
+                <% end %>
+              </div>
+              <div class="article-info">
+                <div class="article-meta">
+                  <span class="article-date"><i class="ph ph-calendar"></i> <%= article.formatted_date %></span>
+                </div>
+                <h3 class="article-title"><%= article.title %></h3>
+                <p class="article-excerpt"><%= article.excerpt %></p>
+              </div>
+            </a>
+          <% end %>
+        </div>
+      </div>
+    </section>
+  <% end %>
+</article>

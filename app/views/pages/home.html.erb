@@ -1,0 +1,254 @@
+<% content_for(:title) { "Home" } %>
+
+<!-- About Preview Section -->
+<section class="section home-about-section" id="sobre"
+  data-controller="magnetic-dots"
+  data-magnetic-dots-dot-size-value="1.5"
+  data-magnetic-dots-dot-spacing-value="28"
+  data-magnetic-dots-attraction-radius-value="160"
+  data-magnetic-dots-attraction-strength-value="0.3"
+  data-magnetic-dots-spring-strength-value="0.05"
+  data-magnetic-dots-damping-value="0.85"
+  data-magnetic-dots-dot-color-value="rgba(160, 160, 160, 0.30)"
+  data-magnetic-dots-flow-angle-value="25"
+  data-magnetic-dots-flow-speed-value="0.02"
+  data-magnetic-dots-flow-amplitude-value="15">
+  <div class="container">
+    <div class="home-about-grid">
+      <div class="home-about-photo fade-in">
+        <div class="home-photo-frame">
+          <%= image_tag "profile.jpg", alt: "Marcos Hiarley", class: "home-profile-img" %>
+          <div class="home-photo-glow"></div>
+        </div>
+        <div class="home-about-badges">
+          <span class="home-badge"><i class="ph ph-graduation-cap"></i> UFPA</span>
+          <span class="home-badge"><i class="ph ph-map-pin"></i> Belém, PA</span>
+        </div>
+      </div>
+
+      <div class="home-about-content fade-in">
+        <span class="section-tag"><i class="ph ph-user"></i> Sobre mim</span>
+        <h2 class="home-about-title">Olá, sou <span class="gradient-text">Marcos Hiarley</span></h2>
+        <p class="home-about-desc">
+          Desenvolvedor <strong>Full Stack</strong> e pesquisador na <strong>UFPA</strong>. Combino engenharia de software com pesquisa acadêmica em
+          <strong>HPC</strong>, redes <strong>5G/6G</strong> e <strong>IoT</strong>.
+        </p>
+        <p class="home-about-desc">
+          Construo aplicações modernas com <strong>Ruby on Rails</strong>, <strong>React</strong>, <strong>PostgreSQL</strong> e <strong>Docker</strong> — do back-end robusto à interface refinada.
+        </p>
+
+        <div class="home-stats-row">
+          <div class="home-stat">
+            <span class="home-stat-num">3+</span>
+            <span class="home-stat-label">Anos de experiência</span>
+          </div>
+          <div class="home-stat">
+            <span class="home-stat-num">10+</span>
+            <span class="home-stat-label">Projetos entregues</span>
+          </div>
+          <div class="home-stat">
+            <span class="home-stat-num">2+</span>
+            <span class="home-stat-label">Artigos publicados</span>
+          </div>
+        </div>
+
+        <div class="home-about-actions">
+          <a href="<%= about_path %>" class="btn btn-primary">
+            <i class="ph ph-user-circle"></i> Ver perfil completo
+          </a>
+          <a href="https://github.com/Hiarleyy" target="_blank" rel="noopener" class="btn btn-outline">
+            <i class="ph ph-github-logo"></i> GitHub
+          </a>
+        </div>
+      </div>
+    </div>
+  </div>
+</section>
+
+
+<!-- Projetos em Destaque -->
+<section class="section section-projects" id="projetos">
+  <div class="container">
+    <div class="section-header fade-in">
+      <span class="section-tag"><i class="ph ph-briefcase"></i> Portfólio</span>
+      <h2 class="section-title">Projetos em Destaque</h2>
+      <p class="section-subtitle">Uma seleção dos trabalhos que mais me orgulho — do código à entrega.</p>
+    </div>
+  </div>
+
+  <%= render "shared/parallax_slider", projects: @featured_projects %>
+
+  <div class="container">
+    <div class="section-action fade-in">
+      <a href="<%= projects_path %>" class="btn btn-outline">
+        Ver Todos os Projetos <i class="ph ph-arrow-right"></i>
+      </a>
+    </div>
+  </div>
+</section>
+
+
+
+<!-- Skills Highlights Section -->
+<section class="section" id="habilidades"
+  data-controller="magnetic-dots"
+  data-magnetic-dots-dot-size-value="1.5"
+  data-magnetic-dots-dot-spacing-value="30"
+  data-magnetic-dots-attraction-radius-value="140"
+  data-magnetic-dots-attraction-strength-value="0.25"
+  data-magnetic-dots-spring-strength-value="0.05"
+  data-magnetic-dots-damping-value="0.85"
+  data-magnetic-dots-dot-color-value="rgba(150, 150, 150, 0.25)"
+  data-magnetic-dots-flow-angle-value="20"
+  data-magnetic-dots-flow-speed-value="0.018"
+  data-magnetic-dots-flow-amplitude-value="12">
+  <div class="container">
+    <div class="section-header fade-in">
+      <span class="section-tag"><i class="ph ph-lightning"></i> Tecnologias</span>
+      <h2 class="section-title">Stack & Habilidades</h2>
+      <p class="section-subtitle">As tecnologias que uso para construir soluções de alto impacto.</p>
+    </div>
+
+    <div class="home-skills-grid">
+      <div class="home-skill-card fade-in">
+        <div class="home-skill-header">
+          <div class="home-skill-icon ruby-icon">
+            <i class="devicon-rails-plain"></i>
+          </div>
+          <div>
+            <h3>Ruby on Rails</h3>
+            <span class="home-skill-level">Expert · 92%</span>
+          </div>
+        </div>
+        <div class="skill-bar"><div class="skill-fill" style="width: 92%"></div></div>
+        <p>Backend, APIs RESTful, autenticação, ActiveRecord e arquitetura escalável.</p>
+      </div>
+
+      <div class="home-skill-card fade-in">
+        <div class="home-skill-header">
+          <div class="home-skill-icon react-icon">
+            <i class="devicon-react-original"></i>
+          </div>
+          <div>
+            <h3>React & JavaScript</h3>
+            <span class="home-skill-level">Avançado · 90%</span>
+          </div>
+        </div>
+        <div class="skill-bar"><div class="skill-fill" style="width: 90%"></div></div>
+        <p>Interfaces dinâmicas, hooks, Stimulus.js e integração com APIs RESTful.</p>
+      </div>
+
+      <div class="home-skill-card fade-in">
+        <div class="home-skill-header">
+          <div class="home-skill-icon pg-icon">
+            <i class="devicon-postgresql-plain"></i>
+          </div>
+          <div>
+            <h3>PostgreSQL</h3>
+            <span class="home-skill-level">Avançado · 90%</span>
+          </div>
+        </div>
+        <div class="skill-bar"><div class="skill-fill" style="width: 90%"></div></div>
+        <p>Modelagem relacional, queries otimizadas, índices e migrations.</p>
+      </div>
+
+      <div class="home-skill-card fade-in">
+        <div class="home-skill-header">
+          <div class="home-skill-icon java-icon">
+            <i class="devicon-java-plain"></i>
+          </div>
+          <div>
+            <h3>Java & Docker</h3>
+            <span class="home-skill-level">Avançado · 88%</span>
+          </div>
+        </div>
+        <div class="skill-bar"><div class="skill-fill" style="width: 88%"></div></div>
+        <p>POO, estruturas de dados, containerização e ambientes reprodutíveis.</p>
+      </div>
+
+      <div class="home-skill-card fade-in">
+        <div class="home-skill-header">
+          <div class="home-skill-icon docker-icon">
+            <i class="devicon-docker-plain"></i>
+          </div>
+          <div>
+            <h3>Docker & DevOps</h3>
+            <span class="home-skill-level">Avançado · 87%</span>
+          </div>
+        </div>
+        <div class="skill-bar"><div class="skill-fill" style="width: 87%"></div></div>
+        <p>Containerização, ambientes isolados, CI/CD e deploy em produção.</p>
+      </div>
+
+      <div class="home-skill-card fade-in">
+        <div class="home-skill-header">
+          <div class="home-skill-icon linux-icon">
+            <i class="devicon-linux-plain"></i>
+          </div>
+          <div>
+            <h3>HPC & Linux</h3>
+            <span class="home-skill-level">Pesquisa · 85%</span>
+          </div>
+        </div>
+        <div class="skill-bar"><div class="skill-fill" style="width: 85%"></div></div>
+        <p>Simulações NS-3, IoT, comunicação sem fio e artigos científicos.</p>
+      </div>
+    </div>
+  </div>
+</section>
+
+
+<!-- Recent Articles -->
+<section class="section" id="artigos">
+  <div class="container">
+    <div class="section-header fade-in">
+      <span class="section-tag"><i class="ph ph-article"></i> Blog</span>
+      <h2 class="section-title">Artigos Recentes</h2>
+      <p class="section-subtitle">Compartilhando conhecimento sobre desenvolvimento web e tecnologia.</p>
+    </div>
+
+    <div class="articles-grid">
+      <% @recent_articles.each_with_index do |article, index| %>
+        <a href="<%= article_path(article.slug) %>" class="article-card fade-in" style="animation-delay: <%= index * 0.1 %>s">
+          <div class="article-image">
+            <% if article.cover_image.attached? %>
+              <%= image_tag article.cover_image, alt: article.title %>
+            <% else %>
+              <div class="article-placeholder">
+                <i class="ph ph-article"></i>
+              </div>
+            <% end %>
+          </div>
+          <div class="article-info">
+            <div class="article-meta">
+              <span class="article-date"><i class="ph ph-calendar"></i> <%= article.formatted_date %></span>
+              <span class="article-reading"><i class="ph ph-clock"></i> <%= article.reading_time %> min</span>
+            </div>
+            <h3 class="article-title"><%= article.title %></h3>
+            <p class="article-excerpt"><%= article.excerpt %></p>
+          </div>
+        </a>
+      <% end %>
+    </div>
+
+    <div class="section-action fade-in">
+      <a href="<%= articles_path %>" class="btn btn-outline">
+        Ver Todos os Artigos <i class="ph ph-arrow-right"></i>
+      </a>
+    </div>
+  </div>
+</section>
+
+
+<!-- CTA Section -->
+<section class="section cta-section">
+  <div class="container">
+    <div class="cta-card fade-in">
+      <h2 class="cta-title">Vamos trabalhar juntos?</h2>
+      <p class="cta-text">Estou sempre aberto a novos projetos e oportunidades. Entre em contato para discutirmos sua próxima ideia.</p>
+      <a href="<%= contact_path %>" class="btn btn-primary btn-lg">
+        <i class="ph ph-rocket"></i> Iniciar Conversa
+      </a>
+    </div>
+  </div>
+</section>

@@ -1,0 +1,11 @@
+<div class="admin-page-header">
+  <div>
+    <h1>Novo Artigo</h1>
+    <p>Crie um novo artigo para o blog.</p>
+  </div>
+  <a href="<%= admin_articles_path %>" class="btn btn-outline btn-sm">
+    <i class="ph ph-arrow-left"></i> Voltar
+  </a>
+</div>
+
+<%= render 'form', article: @article %>

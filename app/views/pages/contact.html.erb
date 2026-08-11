@@ -1,0 +1,94 @@
+<% content_for(:title) { "Contato" } %>
+<% content_for(:meta_description) { "Entre em contato para discutirmos seu próximo projeto ou oportunidade." } %>
+
+<section class="page-header">
+  <div class="container">
+    <h1 class="page-title fade-in">Entre em <span class="gradient-text">Contato</span></h1>
+    <p class="page-subtitle fade-in">Vamos conversar sobre seu próximo projeto.</p>
+  </div>
+</section>
+
+<section class="section">
+  <div class="container">
+    <div class="contact-grid">
+      <div class="contact-info fade-in">
+        <h2>Vamos conversar!</h2>
+        <p>Estou sempre aberto a discutir novos projetos, ideias criativas ou oportunidades de trabalho.</p>
+
+        <div class="contact-methods">
+          <div class="contact-method">
+            <div class="contact-icon"><i class="ph ph-envelope"></i></div>
+            <div>
+              <h4>Email</h4>
+              <p>Marcoshiarley.silva@gmail.com</p>
+            </div>
+          </div>
+
+          <div class="contact-method">
+            <div class="contact-icon"><i class="ph ph-map-pin"></i></div>
+            <div>
+              <h4>Localização</h4>
+              <p>Belém, PA — Brasil</p>
+            </div>
+          </div>
+
+          <div class="contact-method">
+            <div class="contact-icon"><i class="ph ph-whatsapp-logo"></i></div>
+            <div>
+              <h4>WhatsApp</h4>
+              <p><a href="https://wa.me/5591992770570" target="_blank" rel="noopener" style="color:inherit;">+55 (91) 99277-0570</a></p>
+            </div>
+          </div>
+
+          <div class="contact-method">
+            <div class="contact-icon"><i class="ph ph-clock"></i></div>
+            <div>
+              <h4>Disponibilidade</h4>
+              <p>Seg - Sex, 9h - 18h</p>
+            </div>
+          </div>
+        </div>
+
+        <div class="contact-social">
+          <a href="https://github.com/Hiarleyy" target="_blank" rel="noopener" class="social-btn" title="GitHub">
+            <i class="ph ph-github-logo"></i>
+          </a>
+          <a href="https://www.linkedin.com/in/marcoshiarley" target="_blank" rel="noopener" class="social-btn" title="LinkedIn">
+            <i class="ph ph-linkedin-logo"></i>
+          </a>
+          <a href="https://wa.me/5591992770570" target="_blank" rel="noopener" class="social-btn" title="WhatsApp">
+            <i class="ph ph-whatsapp-logo"></i>
+          </a>
+        </div>
+      </div>
+
+      <div class="contact-form-wrapper fade-in">
+        <%= form_with url: contact_path, method: :post, class: "contact-form", local: true do |f| %>
+          <div class="form-group">
+            <label for="contact_name" class="form-label">Nome</label>
+            <input type="text" id="contact_name" name="name" class="form-input" placeholder="Seu nome" required>
+          </div>
+
+          <div class="form-group">
+            <label for="contact_email" class="form-label">Email</label>
+            <input type="email" id="contact_email" name="email" class="form-input" placeholder="seu@email.com" required>
+          </div>
+
+          <div class="form-group">
+            <label for="contact_subject" class="form-label">Assunto</label>
+            <input type="text" id="contact_subject" name="subject" class="form-input" placeholder="Sobre o que gostaria de conversar?">
+          </div>
+
+          <div class="form-group">
+            <label for="contact_message" class="form-label">Mensagem</label>
+            <textarea id="contact_message" name="message" class="form-input form-textarea" placeholder="Sua mensagem..." rows="5" required></textarea>
+          </div>
+
+          <button type="submit" class="btn btn-primary btn-block">
+            <i class="ph ph-paper-plane-tilt"></i> Enviar Mensagem
+          </button>
+        <% end %>
+      </div>
+    </div>
+  </div>
+</section>

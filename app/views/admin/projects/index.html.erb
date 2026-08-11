@@ -1,0 +1,73 @@
+<div class="admin-page-header">
+  <div>
+    <h1>Projetos</h1>
+    <p>Gerencie os projetos do seu portfólio.</p>
+  </div>
+  <a href="<%= new_admin_project_path %>" class="btn btn-primary">
+    <i class="ph ph-plus"></i> Novo Projeto
+  </a>
+</div>
+
+<div class="admin-card">
+  <% if @projects.any? %>
+    <table class="admin-table">
+      <thead>
+        <tr>
+          <th>Título</th>
+          <th>Tecnologias</th>
+          <th>Destaque</th>
+          <th>Posição</th>
+          <th>Ações</th>
+        </tr>
+      </thead>
+      <tbody>
+        <% @projects.each do |project| %>
+          <tr>
+            <td>
+              <div class="table-title-cell">
+                <% if project.screenshot.attached? %>
+                  <%= image_tag project.screenshot, class: "table-thumbnail" %>
+                <% end %>
+                <strong><%= project.title %></strong>
+              </div>
+            </td>
+            <td>
+              <div class="project-techs project-techs-sm">
+                <% project.technologies.to_s.split(",").first(3).each do |tech| %>
+                  <span class="tech-badge tech-badge-sm"><%= tech.strip %></span>
+                <% end %>
+              </div>
+            </td>
+            <td>
+              <% if project.featured? %>
+                <i class="ph ph-star-fill" style="color: var(--accent);"></i>
+              <% else %>
+                <i class="ph ph-star" style="color: var(--text-muted);"></i>
+              <% end %>
+            </td>
+            <td><%= project.position %></td>
+            <td>
+              <div class="table-actions">
+                <a href="<%= project_path(project) %>" target="_blank" class="btn-icon" title="Ver">
+                  <i class="ph ph-eye"></i>
+                </a>
+                <a href="<%= edit_admin_project_path(project) %>" class="btn-icon" title="Editar">
+                  <i class="ph ph-pencil-simple"></i>
+                </a>
+                <%= link_to admin_project_path(project), method: :delete, class: "btn-icon btn-icon-danger", title: "Excluir", data: { turbo_method: :delete, turbo_confirm: "Tem certeza que deseja excluir este projeto?" } do %>
+                  <i class="ph ph-trash"></i>
+                <% end %>
+              </div>
+            </td>
+          </tr>
+        <% end %>
+      </tbody>
+    </table>
+  <% else %>
+    <div class="empty-state-sm">
+      <i class="ph ph-folder-notch-open"></i>
+      <p>Nenhum projeto criado ainda.</p>
+      <a href="<%= new_admin_project_path %>" class="btn btn-primary btn-sm">Criar Primeiro Projeto</a>
+    </div>
+  <% end %>
+</div>

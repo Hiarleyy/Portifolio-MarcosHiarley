@@ -1,0 +1,115 @@
+<%= form_with(model: [:admin, article], class: "admin-form", local: true) do |f| %>
+  <% if article.errors.any? %>
+    <div class="form-errors">
+      <h3><i class="ph ph-warning"></i> <%= pluralize(article.errors.count, "erro encontrado", "erros encontrados") %>:</h3>
+      <ul>
+        <% article.errors.full_messages.each do |message| %>
+          <li><%= message %></li>
+        <% end %>
+      </ul>
+    </div>
+  <% end %>
+
+  <div class="admin-form-grid">
+    <!-- Main Content -->
+    <div class="admin-form-main">
+      <div class="admin-card">
+        <h3 class="admin-card-title">Conteúdo</h3>
+
+        <div class="form-group">
+          <label for="article_title" class="form-label">Título *</label>
+          <%= f.text_field :title, class: "form-input", placeholder: "Título do artigo", required: true, id: "article_title" %>
+        </div>
+
+        <div class="form-group">
+          <label for="article_slug" class="form-label">Slug (URL)</label>
+          <%= f.text_field :slug, class: "form-input", placeholder: "titulo-do-artigo (gerado automaticamente)", id: "article_slug" %>
+          <span class="form-hint">Deixe em branco para gerar automaticamente a partir do título.</span>
+        </div>
+
+        <div class="form-group">
+          <label for="article_excerpt" class="form-label">Resumo</label>
+          <%= f.text_area :excerpt, class: "form-input form-textarea", placeholder: "Breve resumo do artigo...", rows: 3, id: "article_excerpt" %>
+        </div>
+
+        <div class="form-group">
+          <label for="article_body" class="form-label">Corpo do Artigo *</label>
+          <%= f.text_area :body, class: "form-input form-textarea form-textarea-lg", placeholder: "Escreva o conteúdo do artigo aqui...", rows: 15, required: true, id: "article_body" %>
+        </div>
+      </div>
+    </div>
+
+    <!-- Sidebar -->
+    <div class="admin-form-sidebar">
+      <div class="admin-card">
+        <h3 class="admin-card-title">Publicação</h3>
+
+        <div class="form-group">
+          <label class="form-checkbox">
+            <%= f.check_box :published, id: "article_published" %>
+            <span class="checkmark"></span>
+            Publicar artigo
+          </label>
+        </div>
+
+        <div class="form-group">
+          <label class="form-checkbox">
+            <%= f.check_box :featured, id: "article_featured" %>
+            <span class="checkmark"></span>
+            Artigo em destaque
+          </label>
+        </div>
+      </div>
+
+      <div class="admin-card">
+        <h3 class="admin-card-title">Imagem de Capa</h3>
+
+        <div class="form-group">
+          <div class="file-upload" id="cover-upload">
+            <% if article.cover_image.attached? %>
+              <div class="file-preview">
+                <%= image_tag article.cover_image, class: "file-preview-img" %>
+              </div>
+            <% end %>
+            <div class="file-upload-area">
+              <i class="ph ph-cloud-arrow-up"></i>
+              <p>Clique ou arraste uma imagem</p>
+              <span class="form-hint">JPEG, PNG ou WebP (máx 10MB)</span>
+            </div>
+            <%= f.file_field :cover_image, accept: "image/jpeg,image/png,image/webp", class: "file-input", id: "article_cover_image" %>
+          </div>
+        </div>
+      </div>
+
+      <div class="admin-card">
+        <h3 class="admin-card-title">Imagens Adicionais</h3>
+
+        <div class="form-group">
+          <div class="file-upload">
+            <div class="file-upload-area">
+              <i class="ph ph-images"></i>
+              <p>Selecione as imagens</p>
+              <span class="form-hint">Múltiplos arquivos permitidos</span>
+            </div>
+            <%= f.file_field :content_images, multiple: true, accept: "image/jpeg,image/png,image/webp", class: "file-input", id: "article_content_images" %>
+          </div>
+        </div>
+
+        <% if article.content_images.attached? %>
+          <div class="attached-images">
+            <% article.content_images.each do |image| %>
+              <div class="attached-image-thumb">
+                <%= image_tag image %>
+              </div>
+            <% end %>
+          </div>
+        <% end %>
+      </div>
+    </div>
+  </div>
+
+  <div class="form-actions">
+    <%= f.submit article.persisted? ? "Atualizar Artigo" : "Criar Artigo", class: "btn btn-primary" %>
+    <a href="<%= admin_articles_path %>" class="btn btn-outline">Cancelar</a>
+  </div>
+<% end %>

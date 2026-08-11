@@ -1,0 +1,93 @@
+<!DOCTYPE html>
+<html lang="pt-BR">
+  <head>
+    <title>Admin | Portfólio</title>
+    <meta name="viewport" content="width=device-width,initial-scale=1">
+    <meta charset="utf-8">
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=Inter:wght@300;400;500;600;700&family=Outfit:wght@500;600;700&display=swap" rel="stylesheet">
+    <script src="https://unpkg.com/@phosphor-icons/web@2.0.3"></script>
+    <%= csrf_meta_tags %>
+    <%= csp_meta_tag %>
+    <%= stylesheet_link_tag "application", "data-turbo-track": "reload" %>
+    <%= javascript_importmap_tags %>
+  </head>
+
+  <body class="admin-body">
+    <div class="admin-layout">
+      <!-- Sidebar -->
+      <aside class="admin-sidebar" id="admin-sidebar">
+        <div class="sidebar-header">
+          <a href="<%= admin_root_path %>" class="sidebar-brand">
+            <span class="brand-icon">&lt;/&gt;</span>
+            <span>Admin</span>
+          </a>
+        </div>
+
+        <nav class="sidebar-nav">
+          <a href="<%= admin_root_path %>" class="sidebar-link <%= 'active' if current_page?(admin_root_path) %>">
+            <i class="ph ph-squares-four"></i>
+            <span>Dashboard</span>
+          </a>
+          <a href="<%= admin_articles_path %>" class="sidebar-link <%= 'active' if request.path.include?('/admin/articles') %>">
+            <i class="ph ph-article"></i>
+            <span>Artigos</span>
+          </a>
+          <a href="<%= admin_projects_path %>" class="sidebar-link <%= 'active' if request.path.include?('/admin/projects') %>">
+            <i class="ph ph-folder-notch-open"></i>
+            <span>Projetos</span>
+          </a>
+        </nav>
+
+        <div class="sidebar-footer">
+          <a href="<%= root_path %>" class="sidebar-link" target="_blank">
+            <i class="ph ph-globe"></i>
+            <span>Ver Site</span>
+          </a>
+          <%= link_to destroy_admin_user_session_path, method: :delete, class: "sidebar-link logout-link", data: { turbo_method: :delete } do %>
+            <i class="ph ph-sign-out"></i>
+            <span>Sair</span>
+          <% end %>
+        </div>
+      </aside>
+
+      <!-- Main content -->
+      <div class="admin-main">
+        <header class="admin-header">
+          <button class="admin-menu-toggle" id="admin-menu-toggle">
+            <i class="ph ph-list"></i>
+          </button>
+          <div class="admin-header-right">
+            <span class="admin-user"><i class="ph ph-user-circle"></i> <%= current_admin_user&.email %></span>
+          </div>
+        </header>
+
+        <div class="admin-content">
+          <% if notice %>
+            <div class="flash flash-notice">
+              <i class="ph ph-check-circle"></i>
+              <span><%= notice %></span>
+              <button class="flash-close" onclick="this.parentElement.remove()">&times;</button>
+            </div>
+          <% end %>
+          <% if alert %>
+            <div class="flash flash-alert">
+              <i class="ph ph-warning-circle"></i>
+              <span><%= alert %></span>
+              <button class="flash-close" onclick="this.parentElement.remove()">&times;</button>
+            </div>
+          <% end %>
+
+          <%= yield %>
+        </div>
+      </div>
+    </div>
+
+    <script>
+      document.getElementById('admin-menu-toggle').addEventListener('click', function() {
+        document.getElementById('admin-sidebar').classList.toggle('active');
+      });
+    </script>
+  </body>
+</html>

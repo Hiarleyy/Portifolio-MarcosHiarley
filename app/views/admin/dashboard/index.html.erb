@@ -1,0 +1,80 @@
+<% content_for(:title) { "Dashboard" } %>
+
+<div class="admin-page-header">
+  <h1>Dashboard</h1>
+  <p>Visão geral do seu portfólio.</p>
+</div>
+
+<!-- Stats Cards -->
+<div class="stats-grid">
+  <div class="stat-card">
+    <div class="stat-card-icon articles-icon"><i class="ph ph-article"></i></div>
+    <div class="stat-card-info">
+      <span class="stat-card-number"><%= @articles_count %></span>
+      <span class="stat-card-label">Total de Artigos</span>
+    </div>
+  </div>
+
+  <div class="stat-card">
+    <div class="stat-card-icon published-icon"><i class="ph ph-check-circle"></i></div>
+    <div class="stat-card-info">
+      <span class="stat-card-number"><%= @published_articles_count %></span>
+      <span class="stat-card-label">Artigos Publicados</span>
+    </div>
+  </div>
+
+  <div class="stat-card">
+    <div class="stat-card-icon projects-icon"><i class="ph ph-folder-notch-open"></i></div>
+    <div class="stat-card-info">
+      <span class="stat-card-number"><%= @projects_count %></span>
+      <span class="stat-card-label">Projetos</span>
+    </div>
+  </div>
+</div>
+
+<!-- Recent Articles -->
+<div class="admin-card">
+  <div class="admin-card-header">
+    <h2><i class="ph ph-clock-counter-clockwise"></i> Artigos Recentes</h2>
+    <a href="<%= new_admin_article_path %>" class="btn btn-primary btn-sm">
+      <i class="ph ph-plus"></i> Novo Artigo
+    </a>
+  </div>
+
+  <% if @recent_articles.any? %>
+    <table class="admin-table">
+      <thead>
+        <tr>
+          <th>Título</th>
+          <th>Status</th>
+          <th>Criado em</th>
+          <th>Ações</th>
+        </tr>
+      </thead>
+      <tbody>
+        <% @recent_articles.each do |article| %>
+          <tr>
+            <td><strong><%= article.title %></strong></td>
+            <td>
+              <% if article.published? %>
+                <span class="status-badge published">Publicado</span>
+              <% else %>
+                <span class="status-badge draft">Rascunho</span>
+              <% end %>
+            </td>
+            <td><%= article.created_at.strftime("%d/%m/%Y") %></td>
+            <td>
+              <a href="<%= edit_admin_article_path(article) %>" class="btn-icon" title="Editar">
+                <i class="ph ph-pencil-simple"></i>
+              </a>
+            </td>
+          </tr>
+        <% end %>
+      </tbody>
+    </table>
+  <% else %>
+    <div class="empty-state-sm">
+      <p>Nenhum artigo criado ainda.</p>
+    </div>
+  <% end %>
+</div>

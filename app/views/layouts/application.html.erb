@@ -1,0 +1,113 @@
+<!DOCTYPE html>
+<html lang="pt-BR">
+  <head>
+    <title><%= content_for?(:title) ? "#{yield(:title)} — Marcos Hiarley" : "Marcos Hiarley — Desenvolvedor Full Stack & Pesquisador" %></title>
+    <meta name="viewport" content="width=device-width,initial-scale=1">
+    <meta name="description" content="<%= content_for?(:description) ? yield(:description) : 'Portfólio de Marcos Hiarley — Desenvolvedor Full Stack e Pesquisador na Universidade Federal do Pará (UFPA), especializado em Ruby on Rails, React, JavaScript, Java e Computação de Alto Desempenho.' %>">
+    <meta charset="utf-8">
+
+    <!-- Google Fonts -->
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=Montserrat:ital,wght@0,300;0,400;0,500;0,600;0,700;0,800;1,400&family=JetBrains+Mono:wght@400;500&display=swap" rel="stylesheet">
+
+    <!-- Swiper 11 CSS & JS -->
+    <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/swiper@11/swiper-bundle.min.css" />
+    <script src="https://cdn.jsdelivr.net/npm/swiper@11/swiper-bundle.min.js"></script>
+
+    <!-- Phosphor Icons (CSS font delivery — works with Rails CSP) -->
+    <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/@phosphor-icons/web@2.1.1/src/regular/style.css" />
+    <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/@phosphor-icons/web@2.1.1/src/bold/style.css" />
+    <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/@phosphor-icons/web@2.1.1/src/fill/style.css" />
+
+    <!-- Devicon — Technology Icons -->
+    <link rel="stylesheet" href="https://cdn.jsdelivr.net/gh/devicons/devicon@v2.16.0/devicon.min.css" />
+
+    <%= csrf_meta_tags %>
+    <%= csp_meta_tag %>
+    <%= stylesheet_link_tag "application", "data-turbo-track": "reload" %>
+    <%= javascript_importmap_tags %>
+  </head>
+
+  <body>
+    <!-- Background mesh gradient -->
+    <div class="bg-mesh"></div>
+
+    <div class="content-wrapper">
+      <!-- Navbar -->
+      <nav class="navbar" id="main-navbar">
+        <div class="container">
+          <%= link_to "Marcos Hiarley", root_path, class: "navbar-brand" %>
+
+          <button class="navbar-toggle" id="navbar-toggle" aria-label="Toggle navigation">
+            <span></span>
+            <span></span>
+            <span></span>
+          </button>
+
+          <ul class="navbar-nav" id="navbar-nav">
+            <li><%= link_to "Home", root_path, class: current_page?(root_path) ? "active" : "" %></li>
+            <li><%= link_to "Blog", articles_path, class: current_page?(articles_path) ? "active" : "" %></li>
+            <li><%= link_to "Projetos", projects_path, class: current_page?(projects_path) ? "active" : "" %></li>
+            <li><%= link_to "Sobre", about_path, class: current_page?(about_path) ? "active" : "" %></li>
+            <li><%= link_to "Contato", contact_path, class: current_page?(contact_path) ? "active" : "" %></li>
+          </ul>
+        </div>
+      </nav>
+
+      <!-- Flash Messages -->
+      <% if notice || alert %>
+        <div class="flash-container">
+          <% if notice %>
+            <div class="flash-message flash-notice"><%= notice %></div>
+          <% end %>
+          <% if alert %>
+            <div class="flash-message flash-alert"><%= alert %></div>
+          <% end %>
+        </div>
+      <% end %>
+
+      <!-- Main Content -->
+      <main>
+        <%= yield %>
+      </main>
+
+      <!-- Footer -->
+      <footer class="footer">
+        <div class="container">
+          <div class="footer-content">
+            <span class="footer-brand">Marcos Hiarley</span>
+            <ul class="footer-links">
+              <li><%= link_to "Home", root_path %></li>
+              <li><%= link_to "Blog", articles_path %></li>
+              <li><%= link_to "Projetos", projects_path %></li>
+              <li><%= link_to "Sobre", about_path %></li>
+              <li><%= link_to "Contato", contact_path %></li>
+            </ul>
+            <span class="footer-copy">&copy; <%= Date.today.year %> Marcos Hiarley. Todos os direitos reservados.</span>
+          </div>
+        </div>
+      </footer>
+    </div>
+
+    <script>
+      // Mobile nav toggle
+      document.getElementById('navbar-toggle').addEventListener('click', function() {
+        document.getElementById('navbar-nav').classList.toggle('open');
+      });
+
+      // Scroll animations
+      document.addEventListener('DOMContentLoaded', function() {
+        const observer = new IntersectionObserver((entries) => {
+          entries.forEach(entry => {
+            if (entry.isIntersecting) {
+              entry.target.classList.add('visible');
+            }
+          });
+        }, { threshold: 0.1 });
+
+        document.querySelectorAll('.animate-on-scroll').forEach(el => observer.observe(el));
+      });
+    </script>
+  </body>
+</html>

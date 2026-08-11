@@ -1,0 +1,54 @@
+<% content_for(:title) { "Blog" } %>
+<% content_for(:meta_description) { "Artigos sobre desenvolvimento web, Ruby on Rails, PostgreSQL e tecnologia." } %>
+
+<section class="page-header">
+  <div class="container">
+    <h1 class="page-title fade-in">Blog & <span class="gradient-text">Artigos</span></h1>
+    <p class="page-subtitle fade-in">Compartilhando conhecimento e experiências sobre desenvolvimento web.</p>
+  </div>
+</section>
+
+<section class="section">
+  <div class="container">
+    <% if @articles.any? %>
+      <div class="articles-grid articles-grid-full">
+        <% @articles.each_with_index do |article, index| %>
+          <a href="<%= article_path(article.slug) %>" class="article-card fade-in" style="animation-delay: <%= index * 0.05 %>s">
+            <div class="article-image">
+              <% if article.cover_image.attached? %>
+                <%= image_tag article.cover_image, alt: article.title %>
+              <% else %>
+                <div class="article-placeholder">
+                  <i class="ph ph-article"></i>
+                </div>
+              <% end %>
+              <% if article.featured? %>
+                <span class="article-badge">Destaque</span>
+              <% end %>
+            </div>
+            <div class="article-info">
+              <div class="article-meta">
+                <span class="article-date"><i class="ph ph-calendar"></i> <%= article.formatted_date %></span>
+                <span class="article-reading"><i class="ph ph-clock"></i> <%= article.reading_time %> min de leitura</span>
+              </div>
+              <h3 class="article-title"><%= article.title %></h3>
+              <p class="article-excerpt"><%= article.excerpt %></p>
+              <span class="article-read-more">Ler mais <i class="ph ph-arrow-right"></i></span>
+            </div>
+          </a>
+        <% end %>
+      </div>
+
+      <!-- Pagination -->
+      <div class="pagination-wrapper fade-in">
+        <%= paginate @articles %>
+      </div>
+    <% else %>
+      <div class="empty-state fade-in">
+        <i class="ph ph-article"></i>
+        <h3>Nenhum artigo publicado ainda</h3>
+        <p>Em breve novos conteúdos serão publicados aqui.</p>
+      </div>
+    <% end %>
+  </div>
+</section>

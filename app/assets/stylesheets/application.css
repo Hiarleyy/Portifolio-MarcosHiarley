@@ -1283,6 +1283,130 @@ p {
   margin-bottom: 0;
 }
 
+.timeline-company {
+  font-size: 0.95rem;
+  font-weight: 500;
+  color: var(--text-secondary);
+  margin-top: -4px;
+  margin-bottom: var(--space-sm);
+  display: block;
+}
+
+/* Education Section */
+.education-grid {
+  display: grid;
+  grid-template-columns: repeat(2, 1fr);
+  gap: var(--space-xl);
+}
+
+.education-card {
+  background: var(--bg-card);
+  border: 1px solid var(--border-color);
+  border-radius: var(--radius-lg);
+  padding: var(--space-lg);
+  transition: all var(--transition-slow);
+  backdrop-filter: blur(10px);
+  display: flex;
+  gap: var(--space-md);
+}
+
+.education-card:hover {
+  border-color: var(--border-glow);
+  transform: translateY(-4px);
+}
+
+.education-icon {
+  font-size: 2rem;
+  color: var(--accent);
+  display: flex;
+  align-items: flex-start;
+  margin-top: 2px;
+}
+
+.education-info {
+  flex: 1;
+}
+
+.education-date {
+  font-size: 0.8rem;
+  font-weight: 600;
+  color: var(--text-muted);
+  text-transform: uppercase;
+  letter-spacing: 0.05em;
+  margin-bottom: var(--space-xs);
+  display: block;
+}
+
+.education-card h3 {
+  font-size: 1.2rem;
+  margin-bottom: var(--space-xs);
+}
+
+.education-degree {
+  font-size: 0.95rem;
+  font-weight: 500;
+  color: var(--text-secondary);
+  margin-bottom: var(--space-sm);
+}
+
+.education-desc {
+  font-size: 0.88rem;
+  color: var(--text-muted);
+  line-height: 1.6;
+}
+
+/* Certifications Section */
+.certifications-grid {
+  display: grid;
+  grid-template-columns: repeat(2, 1fr);
+  gap: var(--space-xl);
+  max-width: 900px;
+  margin: 0 auto;
+}
+
+.cert-card {
+  background: var(--bg-card);
+  border: 1px solid var(--border-color);
+  border-radius: var(--radius-md);
+  padding: var(--space-lg);
+  transition: all var(--transition-slow);
+  backdrop-filter: blur(10px);
+  display: flex;
+  gap: var(--space-md);
+}
+
+.cert-card:hover {
+  border-color: var(--border-glow);
+  transform: translateY(-4px);
+}
+
+.cert-icon {
+  font-size: 1.8rem;
+  color: var(--accent);
+  display: flex;
+  align-items: flex-start;
+}
+
+.cert-info {
+  flex: 1;
+}
+
+.cert-info h3 {
+  font-size: 1.05rem;
+  margin-bottom: var(--space-xs);
+}
+
+.cert-issuer {
+  font-size: 0.9rem;
+  color: var(--text-secondary);
+  margin-bottom: var(--space-xs);
+}
+
+.cert-date {
+  font-size: 0.8rem;
+  color: var(--text-muted);
+}
+
 /* ===========================
    Contact Page
    =========================== */
@@ -2299,6 +2423,12 @@ textarea.form-input {
   .about-grid {
     grid-template-columns: 1fr;
     gap: var(--space-xl);
+  }
+
+  .education-grid,
+  .certifications-grid {
+    grid-template-columns: 1fr;
+    gap: var(--space-lg);
   }
 
   .contact-grid {

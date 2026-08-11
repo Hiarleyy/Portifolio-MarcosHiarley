@@ -1113,6 +1113,13 @@ p {
   color: var(--text-primary);
 }
 
+.about-actions {
+  display: flex;
+  gap: var(--space-md);
+  flex-wrap: wrap;
+  margin-top: var(--space-xl);
+}
+
 .about-image {
   display: flex;
   justify-content: center;

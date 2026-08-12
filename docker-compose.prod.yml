@@ -1,8 +1,6 @@
 services:
   db:
     image: postgres:16-alpine
-    env_file:
-      - .env
     environment:
       POSTGRES_USER: ${DB_USER:-portfolio}
       POSTGRES_PASSWORD: ${DB_PASSWORD}
@@ -26,8 +24,6 @@ services:
       - insilico
     volumes:
       - storage_data:/rails/storage
-    env_file:
-      - .env
     environment:
       DATABASE_URL: "postgres://${DB_USER:-portfolio}:${DB_PASSWORD}@db:5432/${DB_NAME:-portfolio_production}"
       RAILS_ENV: production

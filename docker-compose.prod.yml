@@ -13,14 +13,15 @@ services:
       interval: 5s
       timeout: 5s
       retries: 5
+    networks:
+      - default
 
   web:
     image: hiarley/portfolio:latest
     restart: always
-    expose:
-      - "3000"
-    depends_on:
-      - db
+    networks:
+      - default
+      - insilico
     volumes:
       - storage_data:/rails/storage
     environment:
@@ -33,22 +34,21 @@ services:
       CONTACT_EMAIL: ${CONTACT_EMAIL}
       APP_HOST: ${APP_HOST}
       SMTP_DOMAIN: ${SMTP_DOMAIN}
-
-  caddy:
-    image: caddy:latest
-    restart: always
-    ports:
-      - "80:80"
-      - "443:443"
-    volumes:
-      - caddy_data:/data
-      - caddy_config:/config
-    command: caddy reverse-proxy --from marcoshiarley.insilico.cloud --to web:3000
-    depends_on:
-      - web
+    deploy:
+      labels:
+        - "traefik.enable=true"
+        - "traefik.http.routers.portfolio-web.rule=Host(`marcoshiarley.insilico.cloud`)"
+        - "traefik.http.routers.portfolio-web.entrypoints=websecure"
+        - "traefik.http.routers.portfolio-web.tls=true"
+        - "traefik.http.routers.portfolio-web.tls.certresolver=letsencrypt"
+        - "traefik.http.services.portfolio-web.loadbalancer.server.port=3000"
 
 volumes:
   postgres_data:
   storage_data:
-  caddy_data:
-  caddy_config:
+
+networks:
+  default:
+  insilico:
+    external: true
+    name: insilico

@@ -1,0 +1,42 @@
+services:
+  traefik:
+    image: traefik:v3.0
+    container_name: traefik-proxy
+    command:
+      # Habilitar o provedor Docker
+      - "--providers.docker=true"
+      - "--providers.docker.exposedbydefault=false"
+      
+      # Entrypoints (Portas de entrada)
+      - "--entrypoints.web.address=:80"
+      - "--entrypoints.websecure.address=:443"
+      
+      # Redirecionamento automático e global de HTTP (porta 80) para HTTPS (porta 443)
+      - "--entrypoints.web.http.redirections.entryPoint.to=websecure"
+      - "--entrypoints.web.http.redirections.entryPoint.scheme=https"
+      
+      # Configuração do Certresolver do Let's Encrypt (Desafio HTTP-01)
+      - "--certificatesresolvers.letsencrypt.acme.httpchallenge=true"
+      - "--certificatesresolvers.letsencrypt.acme.httpchallenge.entrypoint=web"
+      # Altere para o seu e-mail para receber avisos do Let's Encrypt
+      - "--certificatesresolvers.letsencrypt.acme.email=marcoshiarley@gmail.com"
+      - "--certificatesresolvers.letsencrypt.acme.storage=/letsencrypt/acme.json"
+    ports:
+      - "80:80"
+      - "443:443"
+    volumes:
+      # Acesso ao socket do Docker para ler as labels
+      - /var/run/docker.sock:/var/run/docker.sock:ro
+      # Volume persistente para salvar os certificados gerados
+      - traefik_certificates:/letsencrypt
+    networks:
+      - insilico
+    restart: unless-stopped
+
+volumes:
+  traefik_certificates:
+
+networks:
+  insilico:
+    external: true
+    name: insilico

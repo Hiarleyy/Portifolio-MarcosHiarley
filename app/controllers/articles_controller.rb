@@ -4,7 +4,7 @@ class ArticlesController < ApplicationController
   end
 
   def show
-    @article = Article.published.find_by!(slug: params[:id])
+    @article = Article.published.where("slug = :id OR slug_en = :id", id: params[:id]).first || Article.published.find_by!(id: params[:id])
     @related_articles = Article.published.where.not(id: @article.id).limit(3)
   end
 end

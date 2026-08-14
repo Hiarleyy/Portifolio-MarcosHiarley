@@ -17,7 +17,7 @@ class PagesController < ApplicationController
     message = params[:message].to_s.strip
 
     if name.blank? || email.blank? || message.blank?
-      redirect_to contact_path, alert: "Por favor, preencha todos os campos obrigatórios."
+      redirect_to contact_path, alert: t("contact.form.errors.required_fields", default: "Por favor, preencha todos os campos obrigatórios.")
       return
     end
 
@@ -28,9 +28,9 @@ class PagesController < ApplicationController
       message: message
     ).deliver_now
 
-    redirect_to contact_path, notice: "Mensagem enviada com sucesso! Entrarei em contato em breve."
+    redirect_to contact_path, notice: t("contact.form.success", default: "Mensagem enviada com sucesso! Entrarei em contato em breve.")
   rescue => e
     Rails.logger.error "ContactMailer error: #{e.message}"
-    redirect_to contact_path, alert: "Erro ao enviar mensagem. Tente novamente ou use o WhatsApp."
+    redirect_to contact_path, alert: t("contact.form.errors.delivery_failed", default: "Erro ao enviar mensagem. Tente novamente ou use o WhatsApp.")
   end
 end

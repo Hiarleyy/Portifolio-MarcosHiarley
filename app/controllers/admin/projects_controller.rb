@@ -43,6 +43,6 @@ class Admin::ProjectsController < Admin::BaseController
   end
 
   def project_params
-    params.require(:project).permit(:title, :description, :technologies, :live_url, :github_url, :featured, :position, :screenshot)
+    params.require(:project).permit(:title, :description, :title_en, :description_en, :technologies, :live_url, :github_url, :featured, :position, :screenshot)
   end
 end

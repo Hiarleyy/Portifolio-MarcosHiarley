@@ -34,9 +34,20 @@ services:
       CONTACT_EMAIL: ${CONTACT_EMAIL}
       APP_HOST: ${APP_HOST}
       SMTP_DOMAIN: ${SMTP_DOMAIN}
+    labels:
+      - "traefik.enable=true"
+      - "traefik.docker.network=insilico"
+      - "traefik.http.routers.portfolio-web.rule=Host(`marcoshiarley.insilico.cloud`)"
+      - "traefik.http.routers.portfolio-web.entrypoints=websecure"
+      - "traefik.http.routers.portfolio-web.priority=1"
+      - "traefik.http.routers.portfolio-web.tls.certresolver=letsencrypt"
+      - "traefik.http.routers.portfolio-web.service=portfolio-web"
+      - "traefik.http.services.portfolio-web.loadbalancer.server.port=3000"
+      - "traefik.http.services.portfolio-web.loadbalancer.passHostHeader=true"
     deploy:
       labels:
-        - "traefik.enable=1"
+        - "traefik.enable=true"
+        - "traefik.docker.network=insilico"
         - "traefik.http.routers.portfolio-web.rule=Host(`marcoshiarley.insilico.cloud`)"
         - "traefik.http.routers.portfolio-web.entrypoints=websecure"
         - "traefik.http.routers.portfolio-web.priority=1"

@@ -39,34 +39,30 @@
         <div class="container">
           <%= link_to "Marcos Hiarley", root_path, class: "navbar-brand" %>
 
-          <div class="navbar-right-group">
-            <!-- Language Switcher (Desktop & Mobile) -->
-            <div class="lang-switcher" aria-label="Language Selector">
-              <%= link_to url_for(request.query_parameters.merge(locale: :pt)), class: "lang-btn #{I18n.locale.to_s.start_with?('pt') ? 'active' : ''}", title: "Português" do %>
-                <span class="lang-flag">🇧🇷</span>
-                <span class="lang-code">PT</span>
-              <% end %>
-              <span class="lang-divider">/</span>
-              <%= link_to url_for(request.query_parameters.merge(locale: :en)), class: "lang-btn #{I18n.locale == :en ? 'active' : ''}", title: "English" do %>
-                <span class="lang-flag">🇺🇸</span>
-                <span class="lang-code">EN</span>
-              <% end %>
+          <div class="navbar-menu-group">
+            <ul class="navbar-nav" id="navbar-nav">
+              <li><%= link_to t("nav.home"), root_path, class: current_page?(root_path) ? "active" : "" %></li>
+              <li><%= link_to t("nav.blog"), articles_path, class: current_page?(articles_path) ? "active" : "" %></li>
+              <li><%= link_to t("nav.projects"), projects_path, class: current_page?(projects_path) ? "active" : "" %></li>
+              <li><%= link_to t("nav.about"), about_path, class: current_page?(about_path) ? "active" : "" %></li>
+              <li><%= link_to t("nav.contact"), contact_path, class: current_page?(contact_path) ? "active" : "" %></li>
+            </ul>
+
+            <div class="navbar-right-group">
+              <!-- Language Switcher -->
+              <div class="lang-switcher" aria-label="Language Selector">
+                <%= link_to "pt", url_for(request.query_parameters.merge(locale: :pt)), class: "lang-btn #{I18n.locale.to_s.start_with?('pt') ? 'active' : ''}", title: "Português" %>
+                <span class="lang-divider">/</span>
+                <%= link_to "en", url_for(request.query_parameters.merge(locale: :en)), class: "lang-btn #{I18n.locale == :en ? 'active' : ''}", title: "English" %>
+              </div>
+
+              <button class="navbar-toggle" id="navbar-toggle" aria-label="<%= t('nav.toggle_navigation') %>">
+                <span></span>
+                <span></span>
+                <span></span>
+              </button>
             </div>
-
-            <button class="navbar-toggle" id="navbar-toggle" aria-label="<%= t('nav.toggle_navigation') %>">
-              <span></span>
-              <span></span>
-              <span></span>
-            </button>
           </div>
-
-          <ul class="navbar-nav" id="navbar-nav">
-            <li><%= link_to t("nav.home"), root_path, class: current_page?(root_path) ? "active" : "" %></li>
-            <li><%= link_to t("nav.blog"), articles_path, class: current_page?(articles_path) ? "active" : "" %></li>
-            <li><%= link_to t("nav.projects"), projects_path, class: current_page?(projects_path) ? "active" : "" %></li>
-            <li><%= link_to t("nav.about"), about_path, class: current_page?(about_path) ? "active" : "" %></li>
-            <li><%= link_to t("nav.contact"), contact_path, class: current_page?(contact_path) ? "active" : "" %></li>
-          </ul>
         </div>
       </nav>
 

@@ -1,10 +1,10 @@
-<% content_for(:title) { "Contato" } %>
-<% content_for(:meta_description) { "Entre em contato para discutirmos seu próximo projeto ou oportunidade." } %>
+<% content_for(:title) { t("contact.title") } %>
+<% content_for(:meta_description) { t("contact.meta_description") } %>
 
 <section class="page-header">
   <div class="container">
-    <h1 class="page-title fade-in">Entre em <span class="gradient-text">Contato</span></h1>
-    <p class="page-subtitle fade-in">Vamos conversar sobre seu próximo projeto.</p>
+    <h1 class="page-title fade-in"><%= t("contact.page_title_prefix") %> <span class="gradient-text"><%= t("contact.page_title_highlight") %></span></h1>
+    <p class="page-subtitle fade-in"><%= t("contact.subtitle") %></p>
   </div>
 </section>
 
@@ -12,14 +12,14 @@
   <div class="container">
     <div class="contact-grid">
       <div class="contact-info fade-in">
-        <h2>Vamos conversar!</h2>
-        <p>Estou sempre aberto a discutir novos projetos, ideias criativas ou oportunidades de trabalho.</p>
+        <h2><%= t("contact.heading") %></h2>
+        <p><%= t("contact.intro") %></p>
 
         <div class="contact-methods">
           <div class="contact-method">
             <div class="contact-icon"><i class="ph ph-envelope"></i></div>
             <div>
-              <h4>Email</h4>
+              <h4><%= t("contact.methods.email_label") %></h4>
               <p>Marcoshiarley.silva@gmail.com</p>
             </div>
           </div>
@@ -27,15 +27,15 @@
           <div class="contact-method">
             <div class="contact-icon"><i class="ph ph-map-pin"></i></div>
             <div>
-              <h4>Localização</h4>
-              <p>Belém, PA — Brasil</p>
+              <h4><%= t("contact.methods.location_label") %></h4>
+              <p><%= t("contact.methods.location_value") %></p>
             </div>
           </div>
 
           <div class="contact-method">
             <div class="contact-icon"><i class="ph ph-whatsapp-logo"></i></div>
             <div>
-              <h4>WhatsApp</h4>
+              <h4><%= t("contact.methods.whatsapp_label") %></h4>
               <p><a href="https://wa.me/5591992770570" target="_blank" rel="noopener" style="color:inherit;">+55 (91) 99277-0570</a></p>
             </div>
           </div>
@@ -43,8 +43,8 @@
           <div class="contact-method">
             <div class="contact-icon"><i class="ph ph-clock"></i></div>
             <div>
-              <h4>Disponibilidade</h4>
-              <p>Seg - Sex, 9h - 18h</p>
+              <h4><%= t("contact.methods.availability_label") %></h4>
+              <p><%= t("contact.methods.availability_value") %></p>
             </div>
           </div>
         </div>
@@ -65,27 +65,27 @@
       <div class="contact-form-wrapper fade-in">
         <%= form_with url: contact_path, method: :post, class: "contact-form", local: true do |f| %>
           <div class="form-group">
-            <label for="contact_name" class="form-label">Nome</label>
-            <input type="text" id="contact_name" name="name" class="form-input" placeholder="Seu nome" required>
+            <label for="contact_name" class="form-label"><%= t("contact.form.name_label") %></label>
+            <input type="text" id="contact_name" name="name" class="form-input" placeholder="<%= t("contact.form.name_placeholder") %>" required>
           </div>
 
           <div class="form-group">
-            <label for="contact_email" class="form-label">Email</label>
-            <input type="email" id="contact_email" name="email" class="form-input" placeholder="seu@email.com" required>
+            <label for="contact_email" class="form-label"><%= t("contact.form.email_label") %></label>
+            <input type="email" id="contact_email" name="email" class="form-input" placeholder="<%= t("contact.form.email_placeholder") %>" required>
           </div>
 
           <div class="form-group">
-            <label for="contact_subject" class="form-label">Assunto</label>
-            <input type="text" id="contact_subject" name="subject" class="form-input" placeholder="Sobre o que gostaria de conversar?">
+            <label for="contact_subject" class="form-label"><%= t("contact.form.subject_label") %></label>
+            <input type="text" id="contact_subject" name="subject" class="form-input" placeholder="<%= t("contact.form.subject_placeholder") %>">
           </div>
 
           <div class="form-group">
-            <label for="contact_message" class="form-label">Mensagem</label>
-            <textarea id="contact_message" name="message" class="form-input form-textarea" placeholder="Sua mensagem..." rows="5" required></textarea>
+            <label for="contact_message" class="form-label"><%= t("contact.form.message_label") %></label>
+            <textarea id="contact_message" name="message" class="form-input form-textarea" placeholder="<%= t("contact.form.message_placeholder") %>" rows="5" required></textarea>
           </div>
 
           <button type="submit" class="btn btn-primary btn-block">
-            <i class="ph ph-paper-plane-tilt"></i> Enviar Mensagem
+            <i class="ph ph-paper-plane-tilt"></i> <%= t("contact.form.submit") %>
           </button>
         <% end %>
       </div>

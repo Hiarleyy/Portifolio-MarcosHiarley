@@ -13,16 +13,16 @@
   <div class="admin-form-grid">
     <div class="admin-form-main">
       <div class="admin-card">
-        <h3 class="admin-card-title">Informações do Projeto</h3>
+        <h3 class="admin-card-title">Informações do Projeto (Português 🇧🇷)</h3>
 
         <div class="form-group">
-          <label for="project_title" class="form-label">Título *</label>
-          <%= f.text_field :title, class: "form-input", placeholder: "Nome do projeto", required: true, id: "project_title" %>
+          <label for="project_title" class="form-label">Título (PT) *</label>
+          <%= f.text_field :title, class: "form-input", placeholder: "Nome do projeto em português", required: true, id: "project_title" %>
         </div>
 
         <div class="form-group">
-          <label for="project_description" class="form-label">Descrição *</label>
-          <%= f.text_area :description, class: "form-input form-textarea form-textarea-lg", placeholder: "Descreva o projeto...", rows: 10, required: true, id: "project_description" %>
+          <label for="project_description" class="form-label">Descrição (PT) *</label>
+          <%= f.text_area :description, class: "form-input form-textarea form-textarea-lg", placeholder: "Descreva o projeto em português...", rows: 8, required: true, id: "project_description" %>
         </div>
 
         <div class="form-group">
@@ -41,6 +41,20 @@
             <label for="project_github_url" class="form-label">URL do GitHub</label>
             <%= f.url_field :github_url, class: "form-input", placeholder: "https://github.com/user/repo", id: "project_github_url" %>
           </div>
+        </div>
+      </div>
+
+      <div class="admin-card" style="margin-top: 1.5rem;">
+        <h3 class="admin-card-title">Informações em Inglês (English 🇺🇸)</h3>
+
+        <div class="form-group">
+          <label for="project_title_en" class="form-label">Título em Inglês (Title EN)</label>
+          <%= f.text_field :title_en, class: "form-input", placeholder: "Project name in English", id: "project_title_en" %>
+        </div>
+
+        <div class="form-group">
+          <label for="project_description_en" class="form-label">Descrição em Inglês (Description EN)</label>
+          <%= f.text_area :description_en, class: "form-input form-textarea form-textarea-lg", placeholder: "Describe the project in English...", rows: 8, id: "project_description_en" %>
         </div>
       </div>
     </div>

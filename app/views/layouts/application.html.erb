@@ -1,9 +1,9 @@
 <!DOCTYPE html>
-<html lang="pt-BR">
+<html lang="<%= I18n.locale == :en ? 'en' : 'pt-BR' %>">
   <head>
-    <title><%= content_for?(:title) ? "#{yield(:title)} — Marcos Hiarley" : "Marcos Hiarley — Desenvolvedor Full Stack & Pesquisador" %></title>
+    <title><%= content_for?(:title) ? "#{yield(:title)} — #{t('site.title_suffix')}" : t('site.default_title') %></title>
     <meta name="viewport" content="width=device-width,initial-scale=1">
-    <meta name="description" content="<%= content_for?(:description) ? yield(:description) : 'Portfólio de Marcos Hiarley — Desenvolvedor Full Stack e Pesquisador na Universidade Federal do Pará (UFPA), especializado em Ruby on Rails, React, JavaScript, Java e Computação de Alto Desempenho.' %>">
+    <meta name="description" content="<%= content_for?(:meta_description) ? yield(:meta_description) : (content_for?(:description) ? yield(:description) : t('site.default_description')) %>">
     <meta charset="utf-8">
 
     <!-- Google Fonts -->
@@ -39,18 +39,33 @@
         <div class="container">
           <%= link_to "Marcos Hiarley", root_path, class: "navbar-brand" %>
 
-          <button class="navbar-toggle" id="navbar-toggle" aria-label="Toggle navigation">
-            <span></span>
-            <span></span>
-            <span></span>
-          </button>
+          <div class="navbar-right-group">
+            <!-- Language Switcher (Desktop & Mobile) -->
+            <div class="lang-switcher" aria-label="Language Selector">
+              <%= link_to url_for(request.query_parameters.merge(locale: :pt)), class: "lang-btn #{I18n.locale.to_s.start_with?('pt') ? 'active' : ''}", title: "Português" do %>
+                <span class="lang-flag">🇧🇷</span>
+                <span class="lang-code">PT</span>
+              <% end %>
+              <span class="lang-divider">/</span>
+              <%= link_to url_for(request.query_parameters.merge(locale: :en)), class: "lang-btn #{I18n.locale == :en ? 'active' : ''}", title: "English" do %>
+                <span class="lang-flag">🇺🇸</span>
+                <span class="lang-code">EN</span>
+              <% end %>
+            </div>
+
+            <button class="navbar-toggle" id="navbar-toggle" aria-label="<%= t('nav.toggle_navigation') %>">
+              <span></span>
+              <span></span>
+              <span></span>
+            </button>
+          </div>
 
           <ul class="navbar-nav" id="navbar-nav">
-            <li><%= link_to "Home", root_path, class: current_page?(root_path) ? "active" : "" %></li>
-            <li><%= link_to "Blog", articles_path, class: current_page?(articles_path) ? "active" : "" %></li>
-            <li><%= link_to "Projetos", projects_path, class: current_page?(projects_path) ? "active" : "" %></li>
-            <li><%= link_to "Sobre", about_path, class: current_page?(about_path) ? "active" : "" %></li>
-            <li><%= link_to "Contato", contact_path, class: current_page?(contact_path) ? "active" : "" %></li>
+            <li><%= link_to t("nav.home"), root_path, class: current_page?(root_path) ? "active" : "" %></li>
+            <li><%= link_to t("nav.blog"), articles_path, class: current_page?(articles_path) ? "active" : "" %></li>
+            <li><%= link_to t("nav.projects"), projects_path, class: current_page?(projects_path) ? "active" : "" %></li>
+            <li><%= link_to t("nav.about"), about_path, class: current_page?(about_path) ? "active" : "" %></li>
+            <li><%= link_to t("nav.contact"), contact_path, class: current_page?(contact_path) ? "active" : "" %></li>
           </ul>
         </div>
       </nav>
@@ -78,13 +93,13 @@
           <div class="footer-content">
             <span class="footer-brand">Marcos Hiarley</span>
             <ul class="footer-links">
-              <li><%= link_to "Home", root_path %></li>
-              <li><%= link_to "Blog", articles_path %></li>
-              <li><%= link_to "Projetos", projects_path %></li>
-              <li><%= link_to "Sobre", about_path %></li>
-              <li><%= link_to "Contato", contact_path %></li>
+              <li><%= link_to t("nav.home"), root_path %></li>
+              <li><%= link_to t("nav.blog"), articles_path %></li>
+              <li><%= link_to t("nav.projects"), projects_path %></li>
+              <li><%= link_to t("nav.about"), about_path %></li>
+              <li><%= link_to t("nav.contact"), contact_path %></li>
             </ul>
-            <span class="footer-copy">&copy; <%= Date.today.year %> Marcos Hiarley. Todos os direitos reservados.</span>
+            <span class="footer-copy">&copy; <%= Date.today.year %> Marcos Hiarley. <%= t("site.all_rights_reserved") %></span>
           </div>
         </div>
       </footer>

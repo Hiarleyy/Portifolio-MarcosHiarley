@@ -1,10 +1,10 @@
-<% content_for(:title) { "Sobre Mim" } %>
-<% content_for(:meta_description) { "Conheça mais sobre Marcos Hiarley, desenvolvedor full stack e pesquisador na UFPA." } %>
+<% content_for(:title) { t("about.title") } %>
+<% content_for(:meta_description) { t("about.meta_description") } %>
 
 <section class="page-header">
   <div class="container">
-    <h1 class="page-title fade-in">Sobre <span class="gradient-text">Mim </span></h1>
-    <p class="page-subtitle fade-in">Desenvolvedor Full Stack & Pesquisador em Ciência da Computação</p>
+    <h1 class="page-title fade-in"><%= t("about.title").split.first %> <span class="gradient-text"><%= t("about.title").split.drop(1).join(" ") %></span></h1>
+    <p class="page-subtitle fade-in"><%= t("about.header_subtitle") %></p>
   </div>
 </section>
 
@@ -23,28 +23,17 @@
   <div class="container">
     <div class="about-grid">
       <div class="about-content fade-in">
-        <h2>Quem sou eu</h2>
-        <p>
-          Sou <strong>Marcos Hiarley</strong>, desenvolvedor Full Stack e pesquisador vinculado à
-          <strong>Faculdade de Computação (FACOMP)</strong> da <strong>Universidade Federal do Pará (UFPA)</strong>.
-          Combino rigor acadêmico e engenharia de software prática para criar aplicações web modernas, escaláveis e eficientes.
-        </p>
-        <p>
-          No desenvolvimento de software, atuo com ferramentas como <strong>Ruby on Rails</strong>, <strong>PostgreSQL</strong>,
-          <strong>React</strong>, <strong>JavaScript</strong>, <strong>Java</strong> e <strong>Docker</strong>.
-          Minha experiência abrange desde a modelagem de banco de dados e APIs RESTful até interfaces responsivas de alto desempenho.
-        </p>
-        <p>
-          Na área de pesquisa, dedico-me a estudos avançados em <strong>Computação de Alto Desempenho (HPC)</strong>,
-          transmissão sem fio em altas frequências para redes <strong>5G e 6G</strong>, simulações em <strong>NS-3</strong> e Internet das Coisas (IoT).
-        </p>
+        <h2><%= t("about.heading") %></h2>
+        <p><%= t("about.bio_p1_html").html_safe %></p>
+        <p><%= t("about.bio_p2_html").html_safe %></p>
+        <p><%= t("about.bio_p3_html").html_safe %></p>
 
         <div class="about-actions">
           <a href="<%= asset_path('Curriculo_pt_br.pdf') %>" download="Curriculo_Marcos_Hiarley_PT.pdf" class="btn btn-primary">
-            <i class="ph ph-file-pdf"></i> Baixar CV (PT)
+            <i class="ph ph-file-pdf"></i> <%= t("about.download_cv_pt") %>
           </a>
           <a href="<%= asset_path('Curriculo_ENG.pdf') %>" download="Resume_Marcos_Hiarley_EN.pdf" class="btn btn-primary">
-            <i class="ph ph-file-pdf"></i> Download CV (EN)
+            <i class="ph ph-file-pdf"></i> <%= t("about.download_cv_en") %>
           </a>
           <a href="https://www.linkedin.com/in/marcoshiarley" target="_blank" rel="noopener" class="btn btn-outline">
             <i class="ph ph-linkedin-logo"></i> LinkedIn
@@ -54,7 +43,7 @@
 
       <div class="about-image fade-in">
         <div class="about-photo-frame">
-          <%= image_tag "profile.jpg", alt: "Foto de perfil de Marcos Hiarley", class: "about-photo" %>
+          <%= image_tag "profile.jpg", alt: "Marcos Hiarley", class: "about-photo" %>
         </div>
       </div>
     </div>
@@ -65,50 +54,50 @@
 <section class="section section-alt">
   <div class="container">
     <div class="section-header fade-in">
-      <span class="section-tag"><i class="ph ph-lightning"></i> Habilidades</span>
-      <h2 class="section-title">Minhas Tecnologias & Competências</h2>
+      <span class="section-tag"><i class="ph ph-lightning"></i> <%= t("about.skills_tag") %></span>
+      <h2 class="section-title"><%= t("about.skills_title") %></h2>
     </div>
 
     <div class="skills-grid">
       <div class="skill-card fade-in">
         <div class="skill-icon"><i class="ph ph-diamond"></i></div>
-        <h3>Ruby on Rails</h3>
-        <p>Desenvolvimento backend, APIs RESTful escaláveis, arquitetura de software e bancos de dados relacionais.</p>
+        <h3><%= t("about.skills.rails_title") %></h3>
+        <p><%= t("about.skills.rails_desc") %></p>
         <div class="skill-bar"><div class="skill-fill" style="width: 92%"></div></div>
       </div>
 
       <div class="skill-card fade-in">
         <div class="skill-icon"><i class="ph ph-atom"></i></div>
-        <h3>React & JavaScript</h3>
-        <p>Criação de interfaces web dinâmicas, componentes responsivos, ES6+, Stimulus.js e integração com APIs.</p>
+        <h3><%= t("about.skills.react_title") %></h3>
+        <p><%= t("about.skills.react_desc") %></p>
         <div class="skill-bar"><div class="skill-fill" style="width: 90%"></div></div>
       </div>
 
       <div class="skill-card fade-in">
         <div class="skill-icon"><i class="ph ph-coffee"></i></div>
-        <h3>Java & Engenharia de Software</h3>
-        <p>Programação orientada a objetos, estruturas de dados avançadas e desenvolvimento de sistemas.</p>
+        <h3><%= t("about.skills.java_title") %></h3>
+        <p><%= t("about.skills.java_desc") %></p>
         <div class="skill-bar"><div class="skill-fill" style="width: 88%"></div></div>
       </div>
 
       <div class="skill-card fade-in">
         <div class="skill-icon"><i class="ph ph-database"></i></div>
-        <h3>PostgreSQL</h3>
-        <p>Modelagem relacional, otimização de queries SQL, índices avançados e persistência de dados.</p>
+        <h3><%= t("about.skills.pg_title") %></h3>
+        <p><%= t("about.skills.pg_desc") %></p>
         <div class="skill-bar"><div class="skill-fill" style="width: 90%"></div></div>
       </div>
 
       <div class="skill-card fade-in">
         <div class="skill-icon"><i class="ph ph-wifi-high"></i></div>
-        <h3>Redes & Simulações (5G/6G)</h3>
-        <p>Pesquisa acadêmica, simulações em NS-3, protocolos de comunicação sem fio e IoT.</p>
+        <h3><%= t("about.skills.networks_title") %></h3>
+        <p><%= t("about.skills.networks_desc") %></p>
         <div class="skill-bar"><div class="skill-fill" style="width: 85%"></div></div>
       </div>
 
       <div class="skill-card fade-in">
         <div class="skill-icon"><i class="ph ph-docker-logo"></i></div>
-        <h3>Docker & DevOps</h3>
-        <p>Containerização de aplicações, ambientes isolados, versionamento com Git e GitHub.</p>
+        <h3><%= t("about.skills.docker_title") %></h3>
+        <p><%= t("about.skills.docker_desc") %></p>
         <div class="skill-bar"><div class="skill-fill" style="width: 87%"></div></div>
       </div>
     </div>
@@ -119,58 +108,58 @@
 <section class="section">
   <div class="container">
     <div class="section-header fade-in">
-      <span class="section-tag"><i class="ph ph-briefcase"></i> Experiência</span>
-      <h2 class="section-title">Minha Trajetória Profissional</h2>
+      <span class="section-tag"><i class="ph ph-briefcase"></i> <%= t("about.experience_tag") %></span>
+      <h2 class="section-title"><%= t("about.experience_title") %></h2>
     </div>
 
     <div class="timeline">
       <div class="timeline-item fade-in">
         <div class="timeline-dot"></div>
         <div class="timeline-content">
-          <span class="timeline-date">jan de 2026 - jun de 2026</span>
-          <h3>Desenvolvedor Full Stack</h3>
-          <p class="timeline-company">Evolutec Educação • Tempo integral</p>
-          <p>Implementação de soluções de back-end robustas utilizando Java e frameworks relacionados, proporcionando maior escalabilidade e facilidade de manutenção para as aplicações desenvolvidas.</p>
+          <span class="timeline-date"><%= t("about.experiences.evolutec.date") %></span>
+          <h3><%= t("about.experiences.evolutec.role") %></h3>
+          <p class="timeline-company"><%= t("about.experiences.evolutec.company") %></p>
+          <p><%= t("about.experiences.evolutec.desc") %></p>
         </div>
       </div>
 
       <div class="timeline-item fade-in">
         <div class="timeline-dot"></div>
         <div class="timeline-content">
-          <span class="timeline-date">mai de 2024 - jan de 2026</span>
-          <h3>Membro de Equipe Científica</h3>
-          <p class="timeline-company">Universidade Federal do Pará (UFPA)</p>
-          <p>Atuação no projeto <em>Machine Learning for Health Predictions</em>, focado no uso de Inteligência Artificial para apoiar o pré-diagnóstico de câncer do colo do útero. O trabalho envolveu o treinamento de um modelo baseado na arquitetura LeNet-5 para análise de exames e predição em saúde.</p>
+          <span class="timeline-date"><%= t("about.experiences.ufpa_health.date") %></span>
+          <h3><%= t("about.experiences.ufpa_health.role") %></h3>
+          <p class="timeline-company"><%= t("about.experiences.ufpa_health.company") %></p>
+          <p><%= t("about.experiences.ufpa_health.desc_html").html_safe %></p>
         </div>
       </div>
 
       <div class="timeline-item fade-in">
         <div class="timeline-dot"></div>
         <div class="timeline-content">
-          <span class="timeline-date">mai de 2023 - Presente</span>
-          <h3>Membro de Equipe Científica</h3>
-          <p class="timeline-company">Universidade Federal do Pará (UFPA) • Estágio</p>
-          <p>Atuação no projeto <em>Transmissão Sem Fio em Altas Frequências para Redes 5G e 6G</em>, desenvolvendo simulações de cenários reais de redes móveis utilizando o simulador open source NS-3 integrado ao módulo mmWave 5G-LENA.</p>
+          <span class="timeline-date"><%= t("about.experiences.ufpa_5g.date") %></span>
+          <h3><%= t("about.experiences.ufpa_5g.role") %></h3>
+          <p class="timeline-company"><%= t("about.experiences.ufpa_5g.company") %></p>
+          <p><%= t("about.experiences.ufpa_5g.desc_html").html_safe %></p>
         </div>
       </div>
 
       <div class="timeline-item fade-in">
         <div class="timeline-dot"></div>
         <div class="timeline-content">
-          <span class="timeline-date">mar de 2022 - nov de 2022</span>
-          <h3>Suporte Técnico</h3>
-          <p class="timeline-company">Sea Telecom</p>
-          <p>Implementação de soluções de banco de dados SQL que aprimoraram a análise de dados, resultando em decisões mais informadas e melhor resposta a necessidades dos clientes.</p>
+          <span class="timeline-date"><%= t("about.experiences.sea_telecom.date") %></span>
+          <h3><%= t("about.experiences.sea_telecom.role") %></h3>
+          <p class="timeline-company"><%= t("about.experiences.sea_telecom.company") %></p>
+          <p><%= t("about.experiences.sea_telecom.desc") %></p>
         </div>
       </div>
 
       <div class="timeline-item fade-in">
         <div class="timeline-dot"></div>
         <div class="timeline-content">
-          <span class="timeline-date">ago de 2019 - dez de 2021</span>
-          <h3>Desenvolvedor para Android</h3>
-          <p class="timeline-company">IFPA - Instituto Federal do Pará • Estágio</p>
-          <p>Atuação no desenvolvimento de aplicativos móveis nativos para a plataforma Android, abrangendo modelagem de banco de dados SQLite local, consumo de APIs e integração de rotinas móveis.</p>
+          <span class="timeline-date"><%= t("about.experiences.ifpa_dev.date") %></span>
+          <h3><%= t("about.experiences.ifpa_dev.role") %></h3>
+          <p class="timeline-company"><%= t("about.experiences.ifpa_dev.company") %></p>
+          <p><%= t("about.experiences.ifpa_dev.desc") %></p>
         </div>
       </div>
     </div>
@@ -181,28 +170,28 @@
 <section class="section section-alt">
   <div class="container">
     <div class="section-header fade-in">
-      <span class="section-tag"><i class="ph ph-graduation-cap"></i> Educação</span>
-      <h2 class="section-title">Formação Acadêmica</h2>
+      <span class="section-tag"><i class="ph ph-graduation-cap"></i> <%= t("about.education_tag") %></span>
+      <h2 class="section-title"><%= t("about.education_title") %></h2>
     </div>
 
     <div class="education-grid">
       <div class="education-card fade-in">
         <div class="education-icon"><i class="ph ph-student"></i></div>
         <div class="education-info">
-          <span class="education-date">set de 2021 - set de 2025</span>
-          <h3>Universidade Federal do Pará</h3>
-          <p class="education-degree">Bacharelado em Engenharia de Computação</p>
-          <p class="education-desc">Formação focada em arquitetura de computadores, inteligência artificial, redes de computadores, computação de alto desempenho (HPC) e algoritmos.</p>
+          <span class="education-date"><%= t("about.educations.ufpa.date") %></span>
+          <h3><%= t("about.educations.ufpa.school") %></h3>
+          <p class="education-degree"><%= t("about.educations.ufpa.degree") %></p>
+          <p class="education-desc"><%= t("about.educations.ufpa.desc") %></p>
         </div>
       </div>
 
       <div class="education-card fade-in">
         <div class="education-icon"><i class="ph ph-book-open"></i></div>
         <div class="education-info">
-          <span class="education-date">fev de 2018 - jul de 2020</span>
-          <h3>IFPA - Instituto Federal do Pará</h3>
-          <p class="education-degree">Ensino Médio Profissionalizante (Pós-médio), Técnico em Informática</p>
-          <p class="education-desc">Formação técnica focada em desenvolvimento de software, modelagem de banco de dados relacionais (SQL), redes de computadores e suporte técnico.</p>
+          <span class="education-date"><%= t("about.educations.ifpa.date") %></span>
+          <h3><%= t("about.educations.ifpa.school") %></h3>
+          <p class="education-degree"><%= t("about.educations.ifpa.degree") %></p>
+          <p class="education-desc"><%= t("about.educations.ifpa.desc") %></p>
         </div>
       </div>
     </div>
@@ -213,26 +202,26 @@
 <section class="section">
   <div class="container">
     <div class="section-header fade-in">
-      <span class="section-tag"><i class="ph ph-certificate"></i> Conquistas</span>
-      <h2 class="section-title">Licenças & Certificados</h2>
+      <span class="section-tag"><i class="ph ph-certificate"></i> <%= t("about.certifications_tag") %></span>
+      <h2 class="section-title"><%= t("about.certifications_title") %></h2>
     </div>
 
     <div class="certifications-grid">
       <div class="cert-card fade-in">
         <div class="cert-icon"><i class="ph ph-medal"></i></div>
         <div class="cert-info">
-          <h3>Transmissão Sem Fio em Altas Frequências para rede 5G e 6G</h3>
-          <p class="cert-issuer">Escola Regional de Alto Desempenho da Região Sul (ERAD-RS)</p>
-          <span class="cert-date">Emitida em abr de 2024</span>
+          <h3><%= t("about.certifications.erad.title") %></h3>
+          <p class="cert-issuer"><%= t("about.certifications.erad.issuer") %></p>
+          <span class="cert-date"><%= t("about.certifications.erad.date") %></span>
         </div>
       </div>
 
       <div class="cert-card fade-in">
         <div class="cert-icon"><i class="ph ph-medal"></i></div>
         <div class="cert-info">
-          <h3>Simpósio Brasileiro de Redes de Computadores e Sistemas Distribuídos (SBRC)</h3>
-          <p class="cert-issuer">Sociedade Brasileira de Computação (SBC)</p>
-          <span class="cert-date">Emitida em mai de 2025</span>
+          <h3><%= t("about.certifications.sbrc.title") %></h3>
+          <p class="cert-issuer"><%= t("about.certifications.sbrc.issuer") %></p>
+          <span class="cert-date"><%= t("about.certifications.sbrc.date") %></span>
         </div>
       </div>
     </div>

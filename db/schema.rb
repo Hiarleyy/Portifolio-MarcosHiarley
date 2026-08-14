@@ -10,7 +10,7 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema[7.1].define(version: 2026_08_06_142927) do
+ActiveRecord::Schema[7.1].define(version: 2026_08_14_000001) do
   # These are extensions that must be enabled in order to support this database
   enable_extension "plpgsql"
 
@@ -61,9 +61,14 @@ ActiveRecord::Schema[7.1].define(version: 2026_08_06_142927) do
     t.datetime "published_at"
     t.datetime "created_at", null: false
     t.datetime "updated_at", null: false
+    t.string "title_en"
+    t.text "body_en"
+    t.text "excerpt_en"
+    t.string "slug_en"
     t.index ["published"], name: "index_articles_on_published"
     t.index ["published_at"], name: "index_articles_on_published_at"
     t.index ["slug"], name: "index_articles_on_slug", unique: true
+    t.index ["slug_en"], name: "index_articles_on_slug_en"
   end
 
   create_table "projects", force: :cascade do |t|
@@ -76,6 +81,8 @@ ActiveRecord::Schema[7.1].define(version: 2026_08_06_142927) do
     t.integer "position", default: 0
     t.datetime "created_at", null: false
     t.datetime "updated_at", null: false
+    t.string "title_en"
+    t.text "description_en"
     t.index ["featured"], name: "index_projects_on_featured"
     t.index ["position"], name: "index_projects_on_position"
   end

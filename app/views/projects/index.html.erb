@@ -1,10 +1,10 @@
-<% content_for(:title) { "Projetos" } %>
-<% content_for(:meta_description) { "Conheça os projetos e aplicações que desenvolvi usando Ruby on Rails e tecnologias modernas." } %>
+<% content_for(:title) { t("projects.title") } %>
+<% content_for(:meta_description) { t("projects.meta_description") } %>
 
 <section class="page-header">
   <div class="container">
-    <h1 class="page-title fade-in">Meus <span class="gradient-text">Projetos</span></h1>
-    <p class="page-subtitle fade-in">Uma coleção dos projetos que desenvolvi ao longo da minha carreira.</p>
+    <h1 class="page-title fade-in"><%= t("projects.page_title_prefix") %> <span class="gradient-text"><%= t("projects.page_title_highlight") %></span></h1>
+    <p class="page-subtitle fade-in"><%= t("projects.subtitle") %></p>
   </div>
 </section>
 
@@ -16,36 +16,36 @@
           <div class="project-card fade-in" style="animation-delay: <%= index * 0.1 %>s">
             <div class="project-image">
               <% if project.screenshot.attached? %>
-                <%= image_tag project.screenshot, alt: project.title %>
+                <%= image_tag project.screenshot, alt: project.localized_title %>
               <% else %>
                 <div class="project-placeholder">
                   <i class="ph ph-code"></i>
                 </div>
               <% end %>
               <% if project.featured? %>
-                <span class="project-badge">Destaque</span>
+                <span class="project-badge"><%= t("projects.featured_badge") %></span>
               <% end %>
               <div class="project-overlay">
                 <div class="project-links">
                   <% if project.live_url.present? %>
-                    <a href="<%= project.live_url %>" target="_blank" rel="noopener" class="project-link-btn" title="Ver Online">
+                    <a href="<%= project.live_url %>" target="_blank" rel="noopener" class="project-link-btn" title="<%= t("projects.view_live") %>">
                       <i class="ph ph-globe"></i>
                     </a>
                   <% end %>
                   <% if project.github_url.present? %>
-                    <a href="<%= project.github_url %>" target="_blank" rel="noopener" class="project-link-btn" title="Ver Código">
+                    <a href="<%= project.github_url %>" target="_blank" rel="noopener" class="project-link-btn" title="<%= t("projects.view_code") %>">
                       <i class="ph ph-github-logo"></i>
                     </a>
                   <% end %>
-                  <a href="<%= project_path(project) %>" class="project-link-btn" title="Detalhes">
+                  <a href="<%= project_path(project) %>" class="project-link-btn" title="<%= t("projects.view_details") %>">
                     <i class="ph ph-arrow-square-out"></i>
                   </a>
                 </div>
               </div>
             </div>
             <div class="project-info">
-              <h3 class="project-title"><%= project.title %></h3>
-              <p class="project-description"><%= truncate(project.description, length: 150) %></p>
+              <h3 class="project-title"><%= project.localized_title %></h3>
+              <p class="project-description"><%= truncate(project.localized_description, length: 150) %></p>
               <div class="project-techs">
                 <% project.technologies.to_s.split(",").each do |tech| %>
                   <span class="tech-badge"><%= tech.strip %></span>
@@ -58,8 +58,8 @@
     <% else %>
       <div class="empty-state fade-in">
         <i class="ph ph-folder-notch-open"></i>
-        <h3>Nenhum projeto cadastrado ainda</h3>
-        <p>Em breve meus projetos aparecerão aqui.</p>
+        <h3><%= t("projects.empty_title") %></h3>
+        <p><%= t("projects.empty_desc") %></p>
       </div>
     <% end %>
   </div>

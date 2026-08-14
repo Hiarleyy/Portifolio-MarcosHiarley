@@ -1,30 +1,30 @@
-<% content_for(:title) { @article.title } %>
-<% content_for(:meta_description) { @article.excerpt } %>
+<% content_for(:title) { @article.localized_title } %>
+<% content_for(:meta_description) { @article.localized_excerpt } %>
 
 <article class="article-show">
   <!-- Article Header -->
   <header class="article-header">
     <div class="container container-narrow">
       <a href="<%= articles_path %>" class="back-link fade-in">
-        <i class="ph ph-arrow-left"></i> Voltar ao Blog
+        <i class="ph ph-arrow-left"></i> <%= t("articles.back_to_blog") %>
       </a>
 
       <div class="article-meta-full fade-in">
         <span><i class="ph ph-calendar"></i> <%= @article.formatted_date %></span>
-        <span><i class="ph ph-clock"></i> <%= @article.reading_time %> min de leitura</span>
+        <span><i class="ph ph-clock"></i> <%= t("articles.reading_time", count: @article.reading_time) %></span>
       </div>
 
-      <h1 class="article-show-title fade-in"><%= @article.title %></h1>
+      <h1 class="article-show-title fade-in"><%= @article.localized_title %></h1>
 
-      <% if @article.excerpt.present? %>
-        <p class="article-show-excerpt fade-in"><%= @article.excerpt %></p>
+      <% if @article.localized_excerpt.present? %>
+        <p class="article-show-excerpt fade-in"><%= @article.localized_excerpt %></p>
       <% end %>
     </div>
 
     <% if @article.cover_image.attached? %>
       <div class="article-cover fade-in">
         <div class="container">
-          <%= image_tag @article.cover_image, alt: @article.title, class: "article-cover-img" %>
+          <%= image_tag @article.cover_image, alt: @article.localized_title, class: "article-cover-img" %>
         </div>
       </div>
     <% end %>
@@ -34,12 +34,12 @@
   <div class="article-body fade-in">
     <div class="container container-narrow">
       <div class="article-content prose">
-        <%= markdown(@article.body) %>
+        <%= markdown(@article.localized_body) %>
       </div>
 
       <% if @article.content_images.attached? %>
         <div class="article-gallery">
-          <h3>Imagens do Artigo</h3>
+          <h3><%= t("articles.gallery_heading") %></h3>
           <div class="gallery-grid">
             <% @article.content_images.each do |image| %>
               <div class="gallery-item">
@@ -57,15 +57,15 @@
     <section class="section section-alt">
       <div class="container">
         <div class="section-header fade-in">
-          <h2 class="section-title">Artigos Relacionados</h2>
+          <h2 class="section-title"><%= t("articles.related_heading") %></h2>
         </div>
 
         <div class="articles-grid">
           <% @related_articles.each do |article| %>
-            <a href="<%= article_path(article.slug) %>" class="article-card fade-in">
+            <a href="<%= article_path(article.localized_slug) %>" class="article-card fade-in">
               <div class="article-image">
                 <% if article.cover_image.attached? %>
-                  <%= image_tag article.cover_image, alt: article.title %>
+                  <%= image_tag article.cover_image, alt: article.localized_title %>
                 <% else %>
                   <div class="article-placeholder">
                     <i class="ph ph-article"></i>
@@ -76,8 +76,8 @@
                 <div class="article-meta">
                   <span class="article-date"><i class="ph ph-calendar"></i> <%= article.formatted_date %></span>
                 </div>
-                <h3 class="article-title"><%= article.title %></h3>
-                <p class="article-excerpt"><%= article.excerpt %></p>
+                <h3 class="article-title"><%= article.localized_title %></h3>
+                <p class="article-excerpt"><%= article.localized_excerpt %></p>
               </div>
             </a>
           <% end %>

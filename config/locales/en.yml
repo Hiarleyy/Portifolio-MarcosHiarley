@@ -1,31 +1,207 @@
-# Files in the config/locales directory are used for internationalization and
-# are automatically loaded by Rails. If you want to use locales other than
-# English, add the necessary files in this directory.
-#
-# To use the locales, use `I18n.t`:
-#
-#     I18n.t "hello"
-#
-# In views, this is aliased to just `t`:
-#
-#     <%= t("hello") %>
-#
-# To use a different locale, set it with `I18n.locale`:
-#
-#     I18n.locale = :es
-#
-# This would use the information in config/locales/es.yml.
-#
-# To learn more about the API, please read the Rails Internationalization guide
-# at https://guides.rubyonrails.org/i18n.html.
-#
-# Be aware that YAML interprets the following case-insensitive strings as
-# booleans: `true`, `false`, `on`, `off`, `yes`, `no`. Therefore, these strings
-# must be quoted to be interpreted as strings. For example:
-#
-#     en:
-#       "yes": yup
-#       enabled: "ON"
-
 en:
-  hello: "Hello world"
+  site:
+    name: "Marcos Hiarley"
+    title_suffix: "Marcos Hiarley"
+    default_title: "Marcos Hiarley — Full Stack Developer & Researcher"
+    default_description: "Portfolio of Marcos Hiarley — Full Stack Developer and Researcher at Federal University of Pará (UFPA), specialized in Ruby on Rails, React, JavaScript, Java and High Performance Computing."
+    all_rights_reserved: "All rights reserved."
+
+  nav:
+    home: "Home"
+    blog: "Blog"
+    projects: "Projects"
+    about: "About"
+    contact: "Contact"
+    toggle_navigation: "Toggle navigation"
+
+  home:
+    about_preview:
+      tag: "About Me"
+      title_prefix: "Hi, I'm"
+      bio_p1_html: "<strong>Full Stack</strong> Developer and researcher at <strong>UFPA</strong>. I combine software engineering with academic research in <strong>HPC</strong>, <strong>5G/6G</strong> networks, and <strong>IoT</strong>."
+      bio_p2_html: "I build modern applications with <strong>Ruby on Rails</strong>, <strong>React</strong>, <strong>PostgreSQL</strong>, and <strong>Docker</strong> — from robust backends to refined interfaces."
+      stats:
+        experience_value: "3+"
+        experience_label: "Years of experience"
+        projects_value: "10+"
+        projects_label: "Projects delivered"
+        publications_value: "5+"
+        publications_label: "National Publications"
+      view_profile: "View full profile"
+      github: "GitHub"
+    projects_section:
+      tag: "Portfolio"
+      title: "Featured Projects"
+      subtitle: "A selection of the work I am most proud of — from code to delivery."
+      view_all: "View All Projects"
+    skills_section:
+      tag: "Technologies"
+      title: "Stack & Skills"
+      subtitle: "The technologies I use to build high-impact solutions."
+      rails_desc: "Backend development, RESTful APIs, authentication, ActiveRecord, and scalable architecture."
+      react_desc: "Dynamic interfaces, hooks, Stimulus.js, and RESTful API integration."
+      pg_desc: "Relational modeling, query optimization, indexing, and migrations."
+      java_desc: "OOP, data structures, containerization, and reproducible environments."
+      docker_desc: "Containerization, isolated environments, CI/CD, and production deployment."
+      hpc_desc: "NS-3 simulations, IoT, wireless communication, and scientific papers."
+      level_expert: "Expert · 92%"
+      level_advanced: "Advanced · 90%"
+      level_advanced_88: "Advanced · 88%"
+      level_advanced_87: "Advanced · 87%"
+      level_research: "Research · 85%"
+    articles_section:
+      tag: "Blog"
+      title: "Recent Articles"
+      subtitle: "Sharing knowledge about web development, engineering, and technology."
+      reading_time: "%{count} min read"
+      view_all: "View All Articles"
+    cta:
+      title: "Let's work together?"
+      text: "I am always open to new projects, collaborations, and opportunities. Get in touch to discuss your next idea."
+      button: "Start a Conversation"
+
+  about:
+    title: "About Me"
+    header_subtitle: "Full Stack Developer & Computer Science Researcher"
+    meta_description: "Learn more about Marcos Hiarley, full stack developer and researcher at UFPA."
+    heading: "Who I am"
+    bio_p1_html: "I am <strong>Marcos Hiarley</strong>, a Full Stack Developer and researcher affiliated with the <strong>Faculty of Computing (FACOMP)</strong> at the <strong>Federal University of Pará (UFPA)</strong>. I combine academic rigor and practical software engineering to build modern, scalable, and efficient web applications."
+    bio_p2_html: "In software engineering, I work with tools such as <strong>Ruby on Rails</strong>, <strong>PostgreSQL</strong>, <strong>React</strong>, <strong>JavaScript</strong>, <strong>Java</strong>, and <strong>Docker</strong>. My experience spans from database modeling and RESTful APIs to high-performance responsive user interfaces."
+    bio_p3_html: "In academic research, I focus on advanced studies in <strong>High Performance Computing (HPC)</strong>, high-frequency wireless transmission for <strong>5G and 6G</strong> networks, <strong>NS-3</strong> simulations, and the Internet of Things (IoT)."
+    download_cv_pt: "Download CV (PT)"
+    download_cv_en: "Download CV (EN)"
+    skills_tag: "Skills"
+    skills_title: "My Technologies & Competencies"
+    skills:
+      rails_title: "Ruby on Rails"
+      rails_desc: "Backend development, scalable RESTful APIs, software architecture, and relational databases."
+      react_title: "React & JavaScript"
+      react_desc: "Dynamic web interfaces, responsive UI components, ES6+, Stimulus.js, and API integration."
+      java_title: "Java & Software Engineering"
+      java_desc: "Object-oriented programming, advanced data structures, and enterprise system development."
+      pg_title: "PostgreSQL"
+      pg_desc: "Relational modeling, SQL query optimization, advanced indexing, and data persistence."
+      networks_title: "Networks & Simulations (5G/6G)"
+      networks_desc: "Academic research, NS-3 simulations, wireless communication protocols, and IoT."
+      docker_title: "Docker & DevOps"
+      docker_desc: "Application containerization, isolated environments, version control with Git and GitHub."
+    experience_tag: "Experience"
+    experience_title: "My Professional Journey"
+    experiences:
+      evolutec:
+        date: "Jan 2026 - Jun 2026"
+        role: "Full Stack Developer"
+        company: "Evolutec Educação • Full-time"
+        desc: "Implementation of robust back-end solutions using Java and related frameworks, providing greater scalability and maintainability for developed applications."
+      ufpa_health:
+        date: "May 2024 - Jan 2026"
+        role: "Scientific Team Member"
+        company: "Federal University of Pará (UFPA)"
+        desc_html: "Work on the <em>Machine Learning for Health Predictions</em> project, focused on using Artificial Intelligence to support cervical cancer pre-diagnosis. The project involved training a model based on the LeNet-5 architecture for examination analysis and healthcare prediction."
+      ufpa_5g:
+        date: "May 2023 - Present"
+        role: "Scientific Team Member"
+        company: "Federal University of Pará (UFPA) • Internship"
+        desc_html: "Work on the <em>Wireless Transmission in High Frequencies for 5G and 6G Networks</em> project, developing real-world mobile network scenario simulations using the open-source NS-3 simulator integrated with the mmWave 5G-LENA module."
+      sea_telecom:
+        date: "Mar 2022 - Nov 2022"
+        role: "Technical Support"
+        company: "Sea Telecom"
+        desc: "Implementation of SQL database solutions that improved data analytics, resulting in more informed decisions and better response to customer needs."
+      ifpa_dev:
+        date: "Aug 2019 - Dec 2021"
+        role: "Android Developer"
+        company: "IFPA - Federal Institute of Pará • Internship"
+        desc: "Development of native mobile applications for the Android platform, covering local SQLite database modeling, REST API consumption, and mobile workflow integration."
+    education_tag: "Education"
+    education_title: "Academic Background"
+    educations:
+      ufpa:
+        date: "Sep 2021 - Sep 2025"
+        school: "Federal University of Pará"
+        degree: "Bachelor of Science in Computer Engineering"
+        desc: "Curriculum focused on computer architecture, artificial intelligence, computer networks, high-performance computing (HPC), and algorithms."
+      ifpa:
+        date: "Feb 2018 - Jul 2020"
+        school: "IFPA - Federal Institute of Pará"
+        degree: "Vocational Technical High School, Information Technology Technician"
+        desc: "Technical training focused on software development, relational database modeling (SQL), computer networks, and IT technical support."
+    certifications_tag: "Achievements"
+    certifications_title: "Licenses & Certifications"
+    certifications:
+      erad:
+        title: "Wireless Transmission in High Frequencies for 5G and 6G Networks"
+        issuer: "Regional High Performance Computing School of the Southern Region (ERAD-RS)"
+        date: "Issued in Apr 2024"
+      sbrc:
+        title: "Brazilian Symposium on Computer Networks and Distributed Systems (SBRC)"
+        issuer: "Brazilian Computer Society (SBC)"
+        date: "Issued in May 2025"
+
+  contact:
+    title: "Contact"
+    page_title_prefix: "Get in"
+    page_title_highlight: "Touch"
+    subtitle: "Let's talk about your next project or opportunity."
+    meta_description: "Get in touch to discuss your next project, collaboration, or opportunity."
+    heading: "Let's talk!"
+    intro: "I am always open to discussing new projects, creative ideas, or employment opportunities."
+    methods:
+      email_label: "Email"
+      location_label: "Location"
+      location_value: "Belém, PA — Brazil"
+      whatsapp_label: "WhatsApp"
+      availability_label: "Availability"
+      availability_value: "Mon - Fri, 9am - 6pm"
+    form:
+      name_label: "Name"
+      name_placeholder: "Your name"
+      email_label: "Email"
+      email_placeholder: "your@email.com"
+      subject_label: "Subject"
+      subject_placeholder: "What would you like to discuss?"
+      message_label: "Message"
+      message_placeholder: "Your message..."
+      submit: "Send Message"
+      success: "Message sent successfully! I will get in touch with you soon."
+      errors:
+        required_fields: "Please fill in all required fields."
+        delivery_failed: "Error sending message. Please try again or reach out via WhatsApp."
+
+  projects:
+    title: "Projects"
+    meta_description: "Discover the projects and applications I built using Ruby on Rails and modern web technologies."
+    page_title_prefix: "My"
+    page_title_highlight: "Projects"
+    subtitle: "A collection of projects I developed throughout my career."
+    featured_badge: "Featured"
+    view_live: "Live Demo"
+    view_code: "View Code"
+    view_details: "Details"
+    back_to_projects: "Back to Projects"
+    technologies_heading: "Technologies"
+    empty_title: "No projects published yet"
+    empty_desc: "New projects will appear here soon."
+
+  articles:
+    title: "Blog"
+    meta_description: "Articles about web development, Ruby on Rails, PostgreSQL, and software engineering."
+    page_title_prefix: "Blog &"
+    page_title_highlight: "Articles"
+    subtitle: "Sharing knowledge and experiences about web and software development."
+    featured_badge: "Featured"
+    reading_time: "%{count} min read"
+    read_more: "Read more"
+    back_to_blog: "Back to Blog"
+    gallery_heading: "Article Images"
+    related_heading: "Related Articles"
+    empty_title: "No articles published yet"
+    empty_desc: "New content will be published here soon."
+
+  slider:
+    featured_project: "Featured Project"
+    view_project: "Live Demo"
+    code: "Code"
+    go_to_project: "Go to project %{number}"
+    prev_project: "Previous project"
+    next_project: "Next project"
